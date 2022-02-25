@@ -14,23 +14,23 @@ Cargo.lock
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/plex-like-front/node_modules
-/plex-like-front/.pnp
-/plex-like-front/.pnp.js
+plex-like-front/node_modules
+plex-like-front/.pnp
+plex-like-front/.pnp.js
 
 # testing
-/plex-like-front/coverage
+plex-like-front/coverage
 
 # production
-/plex-like-front/build
+plex-like-front/build
 
 # misc
-/plex-like-front/.DS_Store
-/plex-like-front/.env.local
-/plex-like-front/.env.development.local
-/plex-like-front/.env.test.local
-/plex-like-front/.env.production.local
+plex-like-front/.DS_Store
+plex-like-front/.env.local
+plex-like-front/.env.development.local
+plex-like-front/.env.test.local
+plex-like-front/.env.production.local
 
-/plex-like-front/npm-debug.log*
-/plex-like-front/yarn-debug.log*
-/plex-like-front/yarn-error.log*
+plex-like-front/npm-debug.log*
+plex-like-front/yarn-debug.log*
+plex-like-front/yarn-error.log*
