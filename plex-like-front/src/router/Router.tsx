@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, BrowserRouter, Route, RouteProps } from 'react-router-dom';
 
 
+
 export type RouteInterface = RouteProps & {
     key: string;
     page: () => JSX.Element;
