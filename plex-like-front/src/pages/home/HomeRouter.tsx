@@ -1,10 +1,12 @@
+import Layout from "../../layout/Layout";
 import { RouteInterface } from "../../router/Router";
 import HomePage from "./HomePage";
 
 const HomeRouter: RouteInterface = {
-    path: "/",
+    path: "/Home",
     key: "Home",
-    page: HomePage
+    page: HomePage,
+    layout: Layout,
 };
 
     
