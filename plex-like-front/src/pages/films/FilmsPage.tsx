@@ -1,4 +1,7 @@
+import Films from "../../components/Films";
+
 const FilmsPage = (): JSX.Element => {
+
   return (
     <div>
       <h1>test FilmsPage</h1>
@@ -6,3 +9,4 @@ const FilmsPage = (): JSX.Element => {
   );
 };
 export default FilmsPage;
+
