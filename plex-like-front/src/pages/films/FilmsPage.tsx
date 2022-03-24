@@ -10,3 +10,4 @@ const FilmsPage = (): JSX.Element => {
   );
 };
 export default FilmsPage;
+
