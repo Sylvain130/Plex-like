@@ -25,7 +25,7 @@ const stylePageFilms: SxProps = {
 
 var rows: JSX.Element[];
 rows=[];
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 100; i++) {
     rows.push( <Films {...{ title, description, date, realisator, Actor, publicmark }} />);
 }
 
