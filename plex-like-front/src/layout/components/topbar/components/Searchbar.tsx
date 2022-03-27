@@ -22,7 +22,6 @@ const StyleIcon: SxProps = {
 
 const StyleTextInput: SxProps = {
   color: "inherit",
-  height: "100%",
   "& .MuiInputBase-input": {
     padding: "0.55rem",
     paddingLeft: "2rem",

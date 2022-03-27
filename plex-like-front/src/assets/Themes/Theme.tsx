@@ -18,9 +18,23 @@ const getDesignTokens = (mode: PaletteMode) => ({
             primary: "#F0F8FF",
             secondary: "#fefefe",
           },
+
+          primary: {
+            main: black,
+            light: black,
+            dark: black,
+          },
+          
+          secondary: {
+            main: grey,
+            light: grey,
+            dark: grey,
+          },
+
+
         }
       : {
-          // palette values for light mode
+          // palette values for dark mode
           background: {
             default: "#1e1e1ee6",
             paper: "#262626b0",
@@ -30,22 +44,50 @@ const getDesignTokens = (mode: PaletteMode) => ({
             primary: "#F0F8FF",
             secondary: "#fefefe",
           },
+
+          primary: {
+            main: black,
+            light: black,
+            dark: black,
+          },
+          
+          secondary: {
+            main: grey,
+            light: grey,
+            dark: grey,
+          },
+
         }),
   },
+
+  typography: {
+    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+  },
+
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           fontSize: "1rem",
           color: grey,
-          border: `0.1rem solid ${black}`,
+        },
+      },
+    },
+
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: grey,
+          fontSize: "0.8rem",
         },
       },
     },
   },
 });
-
-// eslint-disable-next-line react-hooks/rules-of-hooks
 
 const theme = createTheme(getDesignTokens("dark"));
 
