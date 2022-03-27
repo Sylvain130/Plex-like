@@ -12,11 +12,11 @@ const styleNavigation: SxProps = {
   justifyContent: "space-around",
 };
 
-const styleButton: SxProps = {
-  padding: "0.3rem,0.6rem",
-  margin: "0.6rem",
-};
-
+const styleButton: SxProps ={
+    padding: '5px,10px',
+    margin: '5px',
+    border: "1px solid" + theme.palette.primary.main,
+}
 const Navigation = (): JSX.Element => {
   const { t } = useTranslation();
   return (
