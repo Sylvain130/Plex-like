@@ -23,18 +23,19 @@ const stylePageFilms: SxProps = {
   gridTemplateRows: "repeat(10,13rem)",
 };
 
-var rows: JSX.Element[];
-rows=[];
+var componentFilm: JSX.Element[];
+componentFilm = [];
 for (let i = 0; i < 100; i++) {
-    rows.push( <Films {...{ title, description, date, realisator, Actor, publicmark }} />);
+  componentFilm.push(
+    <Films
+      key={i}
+      {...{ title, description, date, realisator, Actor, publicmark }}
+    />
+  );
 }
 
 const FilmsPage = (): JSX.Element => {
-  return (
-    <Box sx={stylePageFilms}>
-        {rows}
-    </Box>
-  );
+  return <Box sx={stylePageFilms}>{componentFilm}</Box>;
 };
 
 export default FilmsPage;
