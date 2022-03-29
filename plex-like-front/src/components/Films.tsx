@@ -52,16 +52,16 @@ const styleFilms: SxProps = {
     opacity: "0",
   },
 
-  "&:hover": {
+  "&:hover ": {
     width: "25rem",
-    height: "20rem",
+    height: "21rem",
     display: "grid",
     gridTemplateColumns: "45% 55%",
-    gridTemplateRows: "10% 65% 8.33% 8.33% 8.34%",
+    gridTemplateRows: "10% 60% 15% 15%",
     zIndex: "1",
 
     "& >*": {
-      margin: "5px",
+      margin: "auto 5px",
     },
 
     "& .poster": {
@@ -112,6 +112,7 @@ const styleFilms: SxProps = {
     },
 
     "& .realisator": {
+
       gridColumn: "1 / 2",
       gridRow: "3",
     },
@@ -129,9 +130,8 @@ const styleFilms: SxProps = {
     "& .mark": {
       display: "flex",
       flexDirection: "row",
-      "& .stars": {
-        alignItems: "center",
-      },
+      alignItems: "center",
+
       gridColumn: "2",
       gridRow: "3",
     },
