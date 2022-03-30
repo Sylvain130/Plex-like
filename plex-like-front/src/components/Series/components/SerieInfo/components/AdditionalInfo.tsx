@@ -15,26 +15,31 @@ const styleAdditionalInfo: SxProps = {
   gridTemplateRows: "50% 50%",
 
   "& .actor": {
+    margin: "auto 0",
     maxWidth: "80%",
     gridColumn: "1 / 3",
     gridRow: "2",
   },
 
   "& .realisator": {
+    display: "flex",
+
+    margin: "auto 0",
     gridColumn: "1",
     gridRow: "1",
   },
 
   "& .mark": {
+    width: "max-Content",
+    marginRight: "20px",
     display: "flex",
     flexDirection: "row",
-    justifyContent:"center",
+    justifySelf: "flex-end",
     alignItems: "center",
 
     gridColumn: "2",
     gridRow: "1",
   },
-
 };
 
 const AdditionalInfo = ({

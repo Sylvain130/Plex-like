@@ -20,7 +20,7 @@ const stylePresentation: SxProps = {
   },
 
   "& .description": {
-    margin: "5px auto",
+    margin: "15px auto",
     textAlign: "justify",
   },
 
