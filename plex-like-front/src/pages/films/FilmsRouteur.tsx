@@ -3,10 +3,10 @@ import { RouteInterface } from "../../router/Router";
 import FilmsPage from "./FilmsPage";
 
 const FilmsRouter: RouteInterface = {
-    path: "/Films",
-    key: "Films",
-    page: FilmsPage,
-    layout: Layout
+  path: "/films",
+  key: "Films",
+  page: FilmsPage,
+  layout: Layout,
 };
 
 export default FilmsRouter;
