@@ -1,11 +1,12 @@
 import { Box, Button, SxProps, Typography } from "@mui/material";
-import theme from "../../../../assets/Themes/Theme";
-import SaisonMenu, { saison } from "./components/SaisonMenu";
+import theme from "../../../../../../assets/Themes/Theme";
+import SaisonMenu from "./components/SaisonMenu";
 import { alpha } from "@mui/material/styles";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { ISaison } from "../../../../../../type/ISaison";
 
 interface IEpisode {
-  saisons: saison[];
+  saisons: ISaison[];
   numSaison: number;
 }
 const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
@@ -21,7 +22,7 @@ const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
   };
 
   const styleEpisode: SxProps = {
-    border: "1px solid",
+    borderTop: "1px solid",
     borderColor: theme.palette.primary.main,
 
     display: "grid",
