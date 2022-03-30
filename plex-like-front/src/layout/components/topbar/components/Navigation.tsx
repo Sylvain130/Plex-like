@@ -2,6 +2,7 @@ import { Box, Button, SxProps } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import MovieIcon from "@mui/icons-material/Movie";
+import theme from "../../../../assets/Themes/Theme";
 
 const styleNavigation: SxProps = {
   width: "50%",

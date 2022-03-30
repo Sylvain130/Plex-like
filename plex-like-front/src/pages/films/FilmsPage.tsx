@@ -1,7 +1,6 @@
 import { Box, SxProps } from "@mui/material";
 import Content from "../../components/Content/Content";
 
-
 const title: string = "Avengers";
 const description: string =
   "Quand un ennemi inattendu fait surface pour menacer la sécurité et l'équilibre mondial, Nick Fury, directeur de l'agence internationale pour le maintien de la paix, connue sous le nom du S.H.I.E.L.D., doit former une équipe pour éviter une catastrophe mondiale imminente.";
