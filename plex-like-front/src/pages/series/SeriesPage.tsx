@@ -1,6 +1,6 @@
 import { Box, SxProps } from "@mui/material";
-import { saison } from "../../components/Series/components/episode/components/SaisonMenu";
 import Series from "../../components/Series/Series";
+import { ISaison } from "../../type/ISaison";
 
 const title: string = "The Witcher";
 const poster: string = "./affiche-the-witcher.png";
@@ -16,7 +16,7 @@ const actor: string[] = [
 ];
 const publicmark: number = 3.9;
 const genre: string = "Heroic fantasy";
-const saisons: saison[] = [
+const saisons: ISaison[] = [
   {
     numSaison: 1,
     nameEpisode: [
@@ -79,7 +79,7 @@ rows = [];
 for (let i = 0; i < 5; i++) {
   rows.push(
     <Series key={i}
-      {...{
+      serieInfo={{
         title,
         poster,
         description,
@@ -87,8 +87,8 @@ for (let i = 0; i < 5; i++) {
         realisator,
         actor,
         publicmark,
-        genre,
-      }}
+        genre,}
+      }
       saisons={saisons}
       />
   );
