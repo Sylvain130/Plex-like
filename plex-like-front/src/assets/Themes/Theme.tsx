@@ -1,7 +1,7 @@
 import { createTheme, PaletteMode } from "@mui/material";
 
-const gris: string = '#a9a9a9';
-const noir: string = '#181818';
+const grey: string = '#a9a9a9';
+const black: string = '#181818';
 
 const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
@@ -38,8 +38,8 @@ const getDesignTokens = (mode: PaletteMode) => ({
           styleOverrides: {
             root: {
               fontSize: '1rem',
-              color: gris,
-              border: `0.1rem solid ${noir}`,
+              color: grey,
+              border: `0.1rem solid ${black}`,
               
             
 
