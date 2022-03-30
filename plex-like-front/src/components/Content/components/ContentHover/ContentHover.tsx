@@ -1,26 +1,23 @@
-import { Box, Button, Typography } from "@mui/material";
-import { styleSeriesHover } from "./StyleSerieHover";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SerieInformation from "../SerieInfo/SerieInformation";
+import { Box, Button, Typography } from "@mui/material";
 import moment from "moment";
-import { ISerieInfo } from "../../../../type/ISerieInfo";
-import { ISaison } from "../../../../type/ISaison";
+import { IContentInfo } from "../../../../type/IContentInfo";
+import ContentInformation from "../ContentInfo/ContentInformation";
+import { styleSeriesHover } from "./StyleContentHover";
 
-interface ISerieHover {
-  serieInfo: ISerieInfo;
-  saisons: ISaison[];
+interface IContentHover {
+  contentInfo: IContentInfo;
   setPopup: (popup: boolean) => void;
 }
 const SerieHover = ({
-  serieInfo,
-  saisons,
+  contentInfo,
   setPopup,
-}: ISerieHover): JSX.Element => {
+}: IContentHover): JSX.Element => {
   return (
     <Box className="Series" sx={styleSeriesHover}>
-      <SerieInformation serieInfo={serieInfo} />
+      <ContentInformation contentInfo={contentInfo} />
       <Typography className="titleDate">
-        {serieInfo.title} - {moment(serieInfo.date).format("YYYY")}
+        {contentInfo.title} - {moment(contentInfo.date).format("YYYY")}
       </Typography>
       <Button
         className="moreButton"

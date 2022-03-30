@@ -1,7 +1,7 @@
 import { alpha, SxProps } from "@mui/material";
 import theme from "../../../../assets/Themes/Theme";
 
-export const styleSerieMore: SxProps = {
+export const styleContentMore: SxProps = {
   
   position: "absolute",
   right: "50%",

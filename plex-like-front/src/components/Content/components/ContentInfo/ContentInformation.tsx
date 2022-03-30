@@ -2,13 +2,13 @@ import { Box, Button } from "@mui/material";
 import AdditionalInfo from "./components/AdditionalInfo";
 import Presentation from "./components/Presentation";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-import { ISerieInfo } from "../../../../type/ISerieInfo";
+import { IContentInfo } from "../../../../type/IContentInfo";
 
 interface ISerieInformation {
-  serieInfo: ISerieInfo;
+  contentInfo: IContentInfo;
 }
 const SerieInformation = ({
-  serieInfo: {
+  contentInfo: {
     title,
     poster,
     description,
