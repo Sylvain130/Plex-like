@@ -6,13 +6,11 @@ import { RouteInterface } from "./Router";
 import HomeRouter from "../pages/home/HomeRouter";
 
 const Routes: RouteInterface[] = [
-
-        LoginRouter,
-        RegisterRouter,
-        HomeRouter,
-        SeriesRouter,
-        FilmsRouter,
-
-]
+  LoginRouter,
+  RegisterRouter,
+  HomeRouter,
+  SeriesRouter,
+  FilmsRouter,
+];
 
 export default Routes;

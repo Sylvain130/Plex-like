@@ -3,10 +3,10 @@ import { RouteInterface } from "../../router/Router";
 import SeriesPage from "./SeriesPage";
 
 const SeriesRouter: RouteInterface = {
-    path: "/Series",
-    key: "Series",
-    page: SeriesPage,
-    layout: Layout
+  path: "/Series",
+  key: "Series",
+  page: SeriesPage,
+  layout: Layout,
 };
 
 export default SeriesRouter;

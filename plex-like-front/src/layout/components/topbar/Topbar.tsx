@@ -14,19 +14,19 @@ const styleTopbar: SxProps = {
   justifyContent: "left",
 
   "& > *": {
-    padding: "10px",
+    padding: "0.6rem",
   },
+};
+
+const styleLogo: SxProps = {
+  height: "10%",
+  maxHeight: "4rem",
 };
 
 const Topbar = (): JSX.Element => {
   return (
     <Box className="topbar" sx={styleTopbar}>
-      <Box
-        component="img"
-        sx={{ height: "10%", maxHeight: "4rem" }}
-        alt="logo"
-        src="./plex-logo.png"
-      />
+      <Box component="img" sx={styleLogo} alt="logo" src="./plex-logo.png" />
       <Navigation />
       <Searchbar />
     </Box>

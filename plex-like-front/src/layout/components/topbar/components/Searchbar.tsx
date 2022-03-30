@@ -11,13 +11,13 @@ const StyleSearchBar: SxProps = {
   height: "100%",
   display: "flex",
   alignItems: "center",
-  justifyContent: 'right',
+  justifyContent: "right",
 };
 
 const StyleIcon: SxProps = {
   position: "relative",
-  top: "0px",
-  left: "30px",
+  top: "0",
+  left: "2rem",
 };
 
 const StyleTextInput: SxProps = {
