@@ -46,7 +46,7 @@ const LoginPage = (): JSX.Element => {
   };
 
   const styleInput: SxProps = {
-    margin: "5px",
+    margin: "0.3rem",
   };
 
   return (
