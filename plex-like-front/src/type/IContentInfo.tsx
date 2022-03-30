@@ -1,4 +1,4 @@
-export interface ISerieInfo {
+export interface IContentInfo {
     title: string;
     poster: string;
     description: string;
