@@ -1,5 +1,5 @@
 import { Box, SxProps } from "@mui/material";
-import Series from "../../components/Series/Series";
+import Content from "../../components/Content/Content";
 import { ISaison } from "../../type/ISaison";
 
 const title: string = "The Witcher";
@@ -78,8 +78,8 @@ var rows: JSX.Element[];
 rows = [];
 for (let i = 0; i < 5; i++) {
   rows.push(
-    <Series key={i}
-      serieInfo={{
+    <Content key={i}
+      contentInfo={{
         title,
         poster,
         description,

@@ -47,7 +47,7 @@ export const styleSeriesHover: SxProps = {
     width: "25rem",
     height: "21rem",
     display: "grid",
-    gridTemplateColumns: "42% 58%",
+    gridTemplateColumns: "43% 57%",
     gridTemplateRows: "71% 29%",
     zIndex: "1",
 
@@ -56,8 +56,8 @@ export const styleSeriesHover: SxProps = {
     },
 
     "& .poster": {
-      width: "10.5rem",
-      height: "calc(10.5rem/0.7)",
+      width: "10.7rem",
+      height: "calc(10.7rem/0.7)",
 
       gridColumn: "1 / 2",
       gridRow: "1",

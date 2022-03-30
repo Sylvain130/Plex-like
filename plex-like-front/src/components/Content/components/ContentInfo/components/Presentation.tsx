@@ -20,16 +20,16 @@ const stylePresentation: SxProps = {
   },
 
   "& .description": {
-    margin: "15px auto",
+    margin: "5px auto",
     textAlign: "justify",
   },
 
   "& .genre": {
-    margin: "5px 0 5px 0",
+    margin: "1px 0 5px 0",
   },
 
   "& .date": {
-    margin: "5px 0 5px 0",
+    margin: "1px 0 5px 0",
   },
 };
 
