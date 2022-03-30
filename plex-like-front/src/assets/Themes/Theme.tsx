@@ -1,7 +1,7 @@
 import { createTheme, PaletteMode } from "@mui/material";
 
-const color1: string = '#a9a9a9';
-const color2: string = '#181818';
+const gris: string = '#a9a9a9';
+const noir: string = '#181818';
 
 const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
@@ -18,11 +18,6 @@ const getDesignTokens = (mode: PaletteMode) => ({
               primary: '#F0F8FF',
               secondary: '#fefefe',
             },
-
-            other:{
-              primary: '#1e1e1eee',
-              secondary: '#141414',
-            },
           }
 
         : {
@@ -36,11 +31,6 @@ const getDesignTokens = (mode: PaletteMode) => ({
               primary: '#F0F8FF',
               secondary: '#fefefe',
             },
-
-            other:{
-              primary: color2,
-              secondary: color1,
-            },
           }),
     },
     components: {
@@ -48,8 +38,8 @@ const getDesignTokens = (mode: PaletteMode) => ({
           styleOverrides: {
             root: {
               fontSize: '1rem',
-              color: color1,
-              border: '1px solid'+ color2,
+              color: gris,
+              border: `0.1rem solid ${noir}`,
               
             
 

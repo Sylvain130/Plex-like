@@ -31,7 +31,7 @@ const LoginPage = (): JSX.Element => {
         justifyContent: 'center',
 
         '& > *': {
-            margin: '15px',
+            margin: '1rem',
             width: '30%',
         }
     }
@@ -49,7 +49,7 @@ const LoginPage = (): JSX.Element => {
 
     return (
         <Box sx={styleLoginPage}>
-            <img src={'./plex-logo.png'} alt="logo" />
+            <img src='./plex-logo.png' alt="logo" />
             <Box
                 component="form"
                 sx={styleForm}

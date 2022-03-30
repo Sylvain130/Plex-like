@@ -24,8 +24,7 @@ const StyleTextInput: SxProps = {
   color: "inherit",
   height: "100%",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
+    padding: "0.55rem",
     paddingLeft: "2rem",
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
