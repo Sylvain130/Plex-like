@@ -2,6 +2,7 @@ import { Box, Button, SxProps } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import MovieIcon from "@mui/icons-material/Movie";
+import { useTranslation } from "react-i18next";
 
 const styleNavigation: SxProps = {
   width: "50%",
@@ -15,6 +16,7 @@ const styleButton: SxProps = {
   margin: "0.6rem",
 };
 const Navigation = (): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <Box sx={styleNavigation}>
       <Button
@@ -24,7 +26,7 @@ const Navigation = (): JSX.Element => {
         component={Link}
         to="/Home"
       >
-        Acceuil
+        {t("Acceuil")}
       </Button>
       <Button
         sx={styleButton}
@@ -33,7 +35,7 @@ const Navigation = (): JSX.Element => {
         component={Link}
         to="/Films"
       >
-        Films
+        {t("Films")}
       </Button>
       <Button
         sx={styleButton}
@@ -42,7 +44,7 @@ const Navigation = (): JSX.Element => {
         component={Link}
         to="/Series"
       >
-        Séries
+        {t("Séries")}
       </Button>
     </Box>
   );

@@ -1,6 +1,7 @@
 import { Box, TextField, Input } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 type FormValues = {
   email: string;
@@ -9,6 +10,8 @@ type FormValues = {
 };
 
 const RegisterPage = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const {
     register,
     getValues,
@@ -45,6 +48,7 @@ const RegisterPage = (): JSX.Element => {
 
   return (
     <Box sx={styleHomePage}>
+      <img src="./plex-logo.png" alt="logo" />
       <Box
         component="form"
         sx={styleForm}
@@ -55,10 +59,13 @@ const RegisterPage = (): JSX.Element => {
         <TextField
           sx={styleInput}
           {...register("email", {
-            required: "Email requis",
-            pattern: { value: /^\S+@\S+$/i, message: "Email non valide" },
+            required: `${t("Email requis")}`,
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: `${t("Email non valide")}`,
+            },
           })}
-          placeholder="Email"
+          placeholder={t("Email")}
           helperText={errors?.email?.message}
           error={errors.email !== undefined}
         />
@@ -66,8 +73,10 @@ const RegisterPage = (): JSX.Element => {
         <TextField
           type="password"
           sx={styleInput}
-          {...register("password", { required: "Mot de passe requis" })}
-          placeholder="Mot de passe"
+          {...register("password", {
+            required: `${t("Mot de passe requis")}`,
+          })}
+          placeholder={t("Mot de passe")}
           helperText={errors?.password?.message}
           error={errors.password !== undefined}
         />
@@ -78,18 +87,18 @@ const RegisterPage = (): JSX.Element => {
           {...register("confirmPassword", {
             validate: {
               requis: (value) =>
-                value !== "" || "Confirmation de mot de passe requis",
+                value !== "" || `${t("Confirmation de mot de passe requis")}`,
               different: (value) =>
                 value === getValues("password") ||
-                "Les mots de passe sont différents",
+                `${t("Les mots de passe sont différents")}`,
             },
           })}
-          placeholder="Confirmation mot de passe"
+          placeholder={t("Confirmation mot de passe")}
           helperText={errors?.confirmPassword?.message}
           error={errors.confirmPassword !== undefined}
         />
 
-        <Input sx={styleInput} type="submit" value="Inscription" />
+        <Input sx={styleInput} type="submit" value={t("Inscription")} />
       </Box>
     </Box>
   );

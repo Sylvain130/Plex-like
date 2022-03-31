@@ -1,6 +1,7 @@
 import { Box, TextField, Input, Link } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { FieldErrors, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 type FormValues = {
   Email: string;
@@ -16,6 +17,8 @@ const errorMessageEmail = (errors: FieldErrors) => {
 };
 
 const LoginPage = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -62,24 +65,24 @@ const LoginPage = (): JSX.Element => {
         <TextField
           sx={styleInput}
           {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
-          placeholder="Email"
+          placeholder={t("Email")}
           helperText={errorMessageEmail(errors)}
         />
 
         <TextField
           sx={styleInput}
           {...register("Password", { required: true })}
-          placeholder="Mot de passe"
+          placeholder={t("Mot de passe")}
           helperText={
-            errors?.Password?.type === "required" && "Mot de passe requis"
+            errors?.Password?.type === "required" &&
+            `${t("Mot de passe requis")}`
           }
         />
 
-        <Input sx={styleInput} type="submit" value="se connecter" />
+        <Input sx={styleInput} type="submit" value={t("Se connecter")} />
       </Box>
       <Link href="/Register" align="center">
-        {" "}
-        Pas inscrit? L'inscription c'est ici{" "}
+        {t("Pas inscrit? L'inscription c'est ici")}
       </Link>
     </Box>
   );

@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import SearchIcon from "@mui/icons-material/Search";
 import { TextField } from "@mui/material";
 import theme from "../../../../assets/Themes/Theme";
+import { useTranslation } from "react-i18next";
 
 const StyleSearchBar: SxProps = {
   position: "relative",
@@ -37,13 +38,15 @@ const StyleTextInput: SxProps = {
 };
 
 export default function SearchAppBar() {
+  const { t } = useTranslation();
+
   return (
     <Box sx={StyleSearchBar}>
       <SearchIcon sx={StyleIcon} />
       <TextField
         sx={StyleTextInput}
-        placeholder="Rechercher..."
-        inputProps={{ "aria-label": "Rechercher" }}
+        placeholder={t("Rechercher...")}
+        inputProps={{ "aria-label": `${t("Rechercher...")}` }}
       />
     </Box>
   );
