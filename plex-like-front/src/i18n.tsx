@@ -1,5 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import translationFR from './i18n/fr.json';
+import translationEN from './i18n/en.json';
 import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 // the translations
@@ -7,28 +9,10 @@ import LanguageDetector from "i18next-browser-languagedetector";
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
   en: {
-    translation: {
-      "Voici le texte de la page film": "Here is the text of the film page",
-      "Acceuil": "Home",
-      "Films": "Films",
-      "Series": "Series",
-      "Rechercher...": "Search...",
-      "Email": "Email",
-      "Mot de passe": "Password",
-      "Se connecter": "Log in",
-      "Pas inscrit? L'inscription c'est ici": "Not registered? Registration is here",
-      "Confirmation mot de passe": "Confirm password",
-      "Inscription": "Registration",
-      "Mot de passe requis": "Password required",
-      "Email non valide": "Invalid email",
-      "Confirmation de mot de passe requis": "Password confirmation required",
-      "Les mots de passe sont différents": "The passwords are different",
-    },
+    translation: translationEN
   },
   fr: {
-    translation: {
-      Welcome: "Bienvenue",
-    },
+    translation: translationFR
   },
 };
 

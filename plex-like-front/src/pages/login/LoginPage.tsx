@@ -4,16 +4,8 @@ import { FieldErrors, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
 type FormValues = {
-  Email: string;
-  Password: string;
-};
-
-const errorMessageEmail = (errors: FieldErrors) => {
-  if (errors?.Email?.type === "required") {
-    return "Email requis";
-  } else if (errors?.Email?.type === "pattern") {
-    return "Email non valide";
-  }
+  email: string;
+  password: string;
 };
 
 const LoginPage = (): JSX.Element => {
@@ -64,25 +56,33 @@ const LoginPage = (): JSX.Element => {
       >
         <TextField
           sx={styleInput}
-          {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
-          placeholder={t("Email")}
-          helperText={errorMessageEmail(errors)}
+          {...register("email", {
+            required: `${t("LoginPage.ErrorRequiredEmail")}`,
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: `${t("LoginPage.ErrorInvalidEmail")}`,
+            },
+          })}
+          placeholder={t("LoginPage.Email")}
+          helperText={errors?.email?.message}
+          error={errors.email !== undefined}
         />
 
         <TextField
+          type="password"
           sx={styleInput}
-          {...register("Password", { required: true })}
-          placeholder={t("Mot de passe")}
-          helperText={
-            errors?.Password?.type === "required" &&
-            `${t("Mot de passe requis")}`
-          }
+          {...register("password", {
+            required: `${t("LoginPage.ErrorRequiredPassword")}`,
+          })}
+          placeholder={t("LoginPage.Password")}
+          helperText={errors?.password?.message}
+          error={errors.password !== undefined}
         />
 
-        <Input sx={styleInput} type="submit" value={t("Se connecter")} />
+        <Input sx={styleInput} type="submit" value={t("LoginPage.Login")} />
       </Box>
       <Link href="/Register" align="center">
-        {t("Pas inscrit? L'inscription c'est ici")}
+        {t("LoginPage.InvitRegister")}
       </Link>
     </Box>
   );

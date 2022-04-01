@@ -45,8 +45,8 @@ export default function SearchAppBar() {
       <SearchIcon sx={StyleIcon} />
       <TextField
         sx={StyleTextInput}
-        placeholder={t("Rechercher...")}
-        inputProps={{ "aria-label": `${t("Rechercher...")}` }}
+        placeholder={t("LayoutTopbarSearch.Search")}
+        inputProps={{ "aria-label": `${t("LayoutTopbarSearch.Search")}` }}
       />
     </Box>
   );

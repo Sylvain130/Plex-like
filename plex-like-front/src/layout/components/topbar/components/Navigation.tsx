@@ -26,7 +26,7 @@ const Navigation = (): JSX.Element => {
         component={Link}
         to="/Home"
       >
-        {t("Acceuil")}
+        {t("LayoutTopbarNavigation.Home")}
       </Button>
       <Button
         sx={styleButton}
@@ -35,7 +35,7 @@ const Navigation = (): JSX.Element => {
         component={Link}
         to="/Films"
       >
-        {t("Films")}
+        {t("LayoutTopbarNavigation.Films")}
       </Button>
       <Button
         sx={styleButton}
@@ -44,7 +44,7 @@ const Navigation = (): JSX.Element => {
         component={Link}
         to="/Series"
       >
-        {t("Séries")}
+        {t("LayoutTopbarNavigation.Series")}
       </Button>
     </Box>
   );

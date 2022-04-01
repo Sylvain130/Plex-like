@@ -59,13 +59,13 @@ const RegisterPage = (): JSX.Element => {
         <TextField
           sx={styleInput}
           {...register("email", {
-            required: `${t("Email requis")}`,
+            required: `${t("RegisterPage.ErrorRequiredEmail")}`,
             pattern: {
               value: /^\S+@\S+$/i,
-              message: `${t("Email non valide")}`,
+              message: `${t("RegisterPage.ErrorInvalidEmail")}`,
             },
           })}
-          placeholder={t("Email")}
+          placeholder={t("RegisterPage.Email")}
           helperText={errors?.email?.message}
           error={errors.email !== undefined}
         />
@@ -74,9 +74,9 @@ const RegisterPage = (): JSX.Element => {
           type="password"
           sx={styleInput}
           {...register("password", {
-            required: `${t("Mot de passe requis")}`,
+            required: `${t("RegisterPage.ErrorRequiredPassword")}`,
           })}
-          placeholder={t("Mot de passe")}
+          placeholder={t("RegisterPage.Password")}
           helperText={errors?.password?.message}
           error={errors.password !== undefined}
         />
@@ -87,18 +87,18 @@ const RegisterPage = (): JSX.Element => {
           {...register("confirmPassword", {
             validate: {
               requis: (value) =>
-                value !== "" || `${t("Confirmation de mot de passe requis")}`,
+                value !== "" || `${t("RegisterPage.ErrorRequiredConfirmPassword")}`,
               different: (value) =>
                 value === getValues("password") ||
-                `${t("Les mots de passe sont différents")}`,
+                `${t("RegisterPage.ErrorDifferentPassword")}`,
             },
           })}
-          placeholder={t("Confirmation mot de passe")}
+          placeholder={t("RegisterPage.ConfirmPassword")}
           helperText={errors?.confirmPassword?.message}
           error={errors.confirmPassword !== undefined}
         />
 
-        <Input sx={styleInput} type="submit" value={t("Inscription")} />
+        <Input sx={styleInput} type="submit" value={t("RegisterPage.Registration")} />
       </Box>
     </Box>
   );

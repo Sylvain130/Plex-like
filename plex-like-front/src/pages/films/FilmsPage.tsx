@@ -5,7 +5,7 @@ const FilmsPage = (): JSX.Element => {
 
   return (
     <div>
-      <h1>{t("Voici le texte de la page film")}</h1>
+      <h1>{t("FilmsPage.text")}</h1>
     </div>
   );
 };
