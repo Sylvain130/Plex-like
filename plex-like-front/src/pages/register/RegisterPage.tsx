@@ -20,7 +20,7 @@ const RegisterPage = (): JSX.Element => {
   } = useForm<FormValues>();
   const onSubmit = handleSubmit((data) => console.log(data));
 
-  const styleHomePage: SxProps = {
+  const styleRegisterPage: SxProps = {
     width: "100%",
     height: "100vh",
 
@@ -31,7 +31,7 @@ const RegisterPage = (): JSX.Element => {
 
     "& > *": {
       margin: "15px",
-      width: "30%",
+      width: "40%",
     },
   };
 
@@ -47,8 +47,7 @@ const RegisterPage = (): JSX.Element => {
   };
 
   return (
-    <Box sx={styleHomePage}>
-      <img src="./plex-logo.png" alt="logo" />
+    <Box sx={styleRegisterPage}>
       <Box
         component="form"
         sx={styleForm}
@@ -87,7 +86,8 @@ const RegisterPage = (): JSX.Element => {
           {...register("confirmPassword", {
             validate: {
               requis: (value) =>
-                value !== "" || `${t("RegisterPage.ErrorRequiredConfirmPassword")}`,
+                value !== "" ||
+                `${t("RegisterPage.ErrorRequiredConfirmPassword")}`,
               different: (value) =>
                 value === getValues("password") ||
                 `${t("RegisterPage.ErrorDifferentPassword")}`,
@@ -98,7 +98,11 @@ const RegisterPage = (): JSX.Element => {
           error={errors.confirmPassword !== undefined}
         />
 
-        <Input sx={styleInput} type="submit" value={t("RegisterPage.Registration")} />
+        <Input
+          sx={styleInput}
+          type="submit"
+          value={t("RegisterPage.Registration")}
+        />
       </Box>
     </Box>
   );
