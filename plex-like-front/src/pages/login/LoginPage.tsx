@@ -15,13 +15,31 @@ const errorMessageEmail = (errors: FieldErrors) => {
   }
 };
 
+const onSubmitClick = (data: Object)=>{
+  console.log("You pressed login")
+  
+  console.log(data)
+  fetch('/../../../plex-like-back/app/login', {
+    method: 'post',
+    body: JSON.stringify(data)
+  }).then(r => r.json())
+    .then(token => {
+      if (token.access_token){
+        console.log(token)          
+      }
+      else {
+        console.log("Please type in correct username/password")
+      }
+    })
+}
+
 const LoginPage = (): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => onSubmitClick(data));
 
   const styleLoginPage: SxProps = {
     width: "100%",
