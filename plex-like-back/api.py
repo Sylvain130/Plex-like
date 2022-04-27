@@ -1,3 +1,4 @@
+import email
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -10,7 +11,7 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY']='004h2af12h3a4e161a7dh2d65fdae25f'
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///bookstore.db'
+    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///Users.db'
     
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -19,7 +20,7 @@ def create_app():
     class Users(db.Model):
         id = db.Column(db.Integer, primary_key=True)
         public_id = db.Column(db.Integer)
-        name = db.Column(db.String(50))
+        email = db.Column(db.String(50))
         password = db.Column(db.String(50))
         admin = db.Column(db.Boolean)
 
@@ -30,6 +31,8 @@ def create_app():
         Author = db.Column(db.String(50), unique=True, nullable=False)
         Publisher = db.Column(db.String(50), nullable=False)
         book_prize = db.Column(db.Integer)
+
+    db.create_all()
 
     def token_required(f):
         @wraps(f)
@@ -62,7 +65,7 @@ def create_app():
 
         hashed_password = generate_password_hash(data['password'], method='sha256')
     
-        new_user = Users(public_id=str(uuid.uuid4()), name=data['name'], password=hashed_password, admin=False) 
+        new_user = Users(public_id=str(uuid.uuid4()), email=data['email'], password=hashed_password, admin=False) 
         db.session.add(new_user)  
         db.session.commit()    
 
@@ -75,7 +78,7 @@ def create_app():
         if not auth or not auth.username or not auth.password:  
             return make_response('could not verify', 401, {'Authentication': 'login required"'})    
 
-        user = Users.query.filter_by(name=auth.username).first()   
+        user = Users.query.filter_by(email=auth.username).first()   
         
         if check_password_hash(user.password, auth.password):
 
