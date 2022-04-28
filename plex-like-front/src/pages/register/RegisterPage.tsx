@@ -1,6 +1,8 @@
 import { Box, TextField, Input } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { useForm } from "react-hook-form";
+import base64 from "react-native-base64";
+import { useNavigate } from "react-router-dom";
 
 type FormValues = {
   email: string;
@@ -15,7 +17,40 @@ const RegisterPage = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit = handleSubmit((data) => console.log(data));
+  
+  const navigate = useNavigate();
+
+  const onSubmit = handleSubmit((data) => onSubmitClick(data));
+  const onSubmitClick = (data: FormValues) => {
+    console.log("You pressed register");
+
+    const headers1 = new Headers({
+      'Content-Type': 'application/json'
+    });
+    const body = JSON.stringify({ "email":`${data.email}`,"password":`${data.password}`});
+
+    fetch("http://localhost:5000/register", {
+      method: "post",
+      headers: headers1,
+      body: body,
+    })
+      .then((r) => r.json())
+    
+    console.log("login");
+
+    const headers2 = new Headers({
+      Authorization: "Basic " + base64.encode(data.email + ":" + data.password),
+    });
+    fetch("http://localhost:5000/login", {
+      method: "post",
+      headers: headers2,
+    })
+      .then((r) => r.json())
+      .then((token) => {
+        console.log(token);
+        navigate("/films");
+      });
+  };
 
   const styleHomePage: SxProps = {
     width: "100%",

@@ -3,5 +3,5 @@ pyjwt
 datetime
 uuid
 Flask-SQLAlchemy
-
+flask-cors
 pytest

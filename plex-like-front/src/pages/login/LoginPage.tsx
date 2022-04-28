@@ -1,10 +1,38 @@
 import { Box, TextField, Input, Link } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { FieldErrors, useForm } from "react-hook-form";
+import base64 from "react-native-base64";
+import { useNavigate } from "react-router-dom";
 
 type FormValues = {
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
+};
+
+const styleForm: SxProps = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+const styleInput: SxProps = {
+  margin: "0.3rem",
+};
+
+const styleLoginPage: SxProps = {
+  width: "100%",
+  height: "100vh",
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+
+  "& > *": {
+    margin: "1rem",
+    width: "30%",
+  },
 };
 
 const errorMessageEmail = (errors: FieldErrors) => {
@@ -15,56 +43,30 @@ const errorMessageEmail = (errors: FieldErrors) => {
   }
 };
 
-const onSubmitClick = (data: Object)=>{
-  console.log("You pressed login")
-  
-  console.log(data)
-  fetch('/../../../plex-like-back/app/login', {
-    method: 'post',
-    body: JSON.stringify(data)
-  }).then(r => r.json())
-    .then(token => {
-      if (token.access_token){
-        console.log(token)          
-      }
-      else {
-        console.log("Please type in correct username/password")
-      }
-    })
-}
-
 const LoginPage = (): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+
+  const navigate = useNavigate();
+
   const onSubmit = handleSubmit((data) => onSubmitClick(data));
-
-  const styleLoginPage: SxProps = {
-    width: "100%",
-    height: "100vh",
-
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-
-    "& > *": {
-      margin: "1rem",
-      width: "30%",
-    },
-  };
-
-  const styleForm: SxProps = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
-  const styleInput: SxProps = {
-    margin: "0.3rem",
+  const onSubmitClick = (data: FormValues) => {
+    console.log("You pressed login");
+    const headers = new Headers({
+      Authorization: "Basic " + base64.encode(data.email + ":" + data.password),
+    });
+    fetch("http://localhost:5000/login", {
+      method: "post",
+      headers: headers,
+    })
+      .then((r) => r.json())
+      .then((token) => {
+        console.log(token);
+        navigate("/films");
+      });
   };
 
   return (
@@ -79,17 +81,17 @@ const LoginPage = (): JSX.Element => {
       >
         <TextField
           sx={styleInput}
-          {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
+          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
           placeholder="Email"
           helperText={errorMessageEmail(errors)}
         />
 
         <TextField
           sx={styleInput}
-          {...register("Password", { required: true })}
+          {...register("password", { required: true })}
           placeholder="Mot de passe"
           helperText={
-            errors?.Password?.type === "required" && "Mot de passe requis"
+            errors?.password?.type === "required" && "Mot de passe requis"
           }
         />
 
