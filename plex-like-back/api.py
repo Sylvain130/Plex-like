@@ -6,9 +6,13 @@ import uuid
 import jwt
 import datetime
 from functools import wraps
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
+
+    cors = CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
 
     app.config['SECRET_KEY']='004h2af12h3a4e161a7dh2d65fdae25f'
     app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///Users.db'
@@ -78,7 +82,10 @@ def create_app():
         if not auth or not auth.username or not auth.password:  
             return make_response('could not verify', 401, {'Authentication': 'login required"'})    
 
-        user = Users.query.filter_by(email=auth.username).first()   
+        try:
+            user = Users.query.filter_by(email=auth.username).first()
+        except:
+            return make_response('could not verify',  401, {'Authentication': '"login required"'})        
         
         if check_password_hash(user.password, auth.password):
 
