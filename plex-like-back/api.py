@@ -59,40 +59,44 @@ def create_app():
             return f(current_user, *args, **kwargs)
         return decorator
 
-    @app.route('/')
-    def home():
-        return 'test'
 
     @app.route('/register', methods=['POST'])
     def signup_user():  
         data = request.get_json()  
 
         hashed_password = generate_password_hash(data['password'], method='sha256')
-    
-        new_user = Users(public_id=str(uuid.uuid4()), email=data['email'], password=hashed_password, admin=False) 
-        db.session.add(new_user)  
-        db.session.commit()    
+        
+        user = Users.query.filter_by(email=data['email']).first()
+        
+        if user == None :
+            new_user = Users(public_id=str(uuid.uuid4()), email=data['email'], password=hashed_password, admin=False) 
+            db.session.add(new_user)  
+            db.session.commit()    
+            return jsonify({'message': 'registeration successfully'}),200
+        else:
+            return jsonify({'message': 'user already exist'}),409
 
-        return jsonify({'message': 'registeration successfully'})
 
     @app.route('/login', methods=['POST'])  
     def login_user(): 
         auth = request.authorization   
 
         if not auth or not auth.username or not auth.password:  
-            return make_response('could not verify', 401, {'Authentication': 'login required"'})    
+            return {'message': 'could not verify'}, 401   
 
-        try:
-            user = Users.query.filter_by(email=auth.username).first()
-        except:
-            return make_response('could not verify',  401, {'Authentication': '"login required"'})        
         
+        user = Users.query.filter_by(email=auth.username).first()
+        if user== None:
+            return jsonify({'message': 'user does not exist'}),401    
+
+    
         if check_password_hash(user.password, auth.password):
-
             token = jwt.encode({'public_id' : user.public_id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=45)}, app.config['SECRET_KEY'], "HS256")
-            return jsonify({'token' : token}) 
+            return jsonify({'token' : token}), 200
+        else:
+            return jsonify({'message': 'invalid password'}), 401
+          
 
-        return make_response('could not verify',  401, {'Authentication': '"login required"'})
 
 
 

@@ -1,5 +1,6 @@
-import { Box, TextField, Input } from "@mui/material";
+import { Box, TextField, Input, Typography } from "@mui/material";
 import { SxProps } from "@mui/system";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import base64 from "react-native-base64";
@@ -11,8 +12,40 @@ type FormValues = {
   confirmPassword: string;
 };
 
+const styleForm: SxProps = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+const styleInput: SxProps = {
+  margin: "0.3rem",
+};
+
+const styleTypo: SxProps = {
+  color: "#f44336",
+  fontSize: "0.75rem",
+};
+
+const styleRegisterPage: SxProps = {
+  width: "100%",
+  height: "100vh",
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+
+  "& > *": {
+    margin: "1rem",
+    width: "40%",
+  },
+};
+
 const RegisterPage = (): JSX.Element => {
   const { t } = useTranslation();
+  const [errorUser, setErrorUser] = useState(false);
 
   const {
     register,
@@ -20,65 +53,48 @@ const RegisterPage = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  
+
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => onSubmitClick(data));
-  const onSubmitClick = (data: FormValues) => {
-    console.log("You pressed register");
 
+  const onSubmitClick = (data: FormValues) => {
     const headers1 = new Headers({
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     });
-    const body = JSON.stringify({ "email":`${data.email}`,"password":`${data.password}`});
+    const body = JSON.stringify({
+      email: `${data.email}`,
+      password: `${data.password}`,
+    });
 
     fetch("http://localhost:5000/register", {
       method: "post",
       headers: headers1,
       body: body,
     })
-      .then((r) => r.json())
-    
-    console.log("login");
-
-    const headers2 = new Headers({
-      Authorization: "Basic " + base64.encode(data.email + ":" + data.password),
-    });
-    fetch("http://localhost:5000/login", {
-      method: "post",
-      headers: headers2,
-    })
-      .then((r) => r.json())
-      .then((token) => {
-        console.log(token);
-        navigate("/films");
-      });
-  };
-
-  const styleRegisterPage: SxProps = {
-    width: "100%",
-    height: "100vh",
-
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-
-    "& > *": {
-      margin: "1rem",
-      width: "40%",
-    },
-  };
-
-  const styleForm: SxProps = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
-  const styleInput: SxProps = {
-    margin: "0.3rem",
+      .then(async (response) => {
+        const r = await response;
+        const message = await r.json();
+        if (r.status !== 200) {
+          if (message.message === "user already exist") {
+            setErrorUser(true);
+          }
+        } else {
+          if (message.message === "registeration successfully") {
+            const headers2 = new Headers({
+              Authorization:
+                "Basic " + base64.encode(data.email + ":" + data.password),
+            });
+            fetch("http://localhost:5000/login", {
+              method: "post",
+              headers: headers2,
+            }).then(() => {
+              navigate("/films");
+            });
+          }
+        }
+      })
+      .catch();
   };
 
   return (
@@ -86,8 +102,7 @@ const RegisterPage = (): JSX.Element => {
       <Box
         component="form"
         sx={styleForm}
-        noValidate
-        autoComplete="off"
+        autoComplete="on"
         onSubmit={onSubmit}
       >
         <TextField
@@ -102,10 +117,19 @@ const RegisterPage = (): JSX.Element => {
           placeholder={t("RegisterPage.Email")}
           helperText={errors?.email?.message}
           error={errors.email !== undefined}
+          onChange={() => setErrorUser(false)}
         />
 
+        {errorUser ? (
+          <Typography sx={styleTypo}>
+            {" "}
+            Cet email est déjà associé à un compte
+          </Typography>
+        ) : (
+          <></>
+        )}
+
         <TextField
-          type="password"
           sx={styleInput}
           {...register("password", {
             required: `${t("RegisterPage.ErrorRequiredPassword")}`,
@@ -116,7 +140,6 @@ const RegisterPage = (): JSX.Element => {
         />
 
         <TextField
-          type="password"
           sx={styleInput}
           {...register("confirmPassword", {
             validate: {
@@ -128,6 +151,7 @@ const RegisterPage = (): JSX.Element => {
                 `${t("RegisterPage.ErrorDifferentPassword")}`,
             },
           })}
+          type="password"
           placeholder={t("RegisterPage.ConfirmPassword")}
           helperText={errors?.confirmPassword?.message}
           error={errors.confirmPassword !== undefined}
