@@ -30,7 +30,7 @@ const RegisterPage = (): JSX.Element => {
     justifyContent: "center",
 
     "& > *": {
-      margin: "15px",
+      margin: "1rem",
       width: "40%",
     },
   };

@@ -21,8 +21,8 @@ describe('test RegisterPage', function () {
                 fireEvent.click(testSubmit);
 
                 await waitFor(() => {expect(screen.getByPlaceholderText("Email")).toHaveValue("test@mail.com")});
-                await waitFor(() => {expect(screen.queryByText("Email requis")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.queryByText("Email non valide")).not.toBeInTheDocument()});
+                expect(screen.queryByText("Email requis")).not.toBeInTheDocument();
+                expect(screen.queryByText("Email non valide")).not.toBeInTheDocument();
             });
 
             test('test unvalid email to email input field', async () => {
@@ -33,11 +33,9 @@ describe('test RegisterPage', function () {
                 const testSubmit = screen.getByDisplayValue("Inscription");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("​​Email non valide");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Email")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.queryByText("Email requis")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.getByText("Email non valide")).toBeInTheDocument()});
+                expect(screen.queryByText("Email requis")).not.toBeInTheDocument();
+                expect(screen.getByText("Email non valide")).toBeInTheDocument();
             });
 
             test('test not email to email input field', async () => {
@@ -48,11 +46,9 @@ describe('test RegisterPage', function () {
                 const testSubmit = screen.getByDisplayValue("Inscription");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("​​Email requis");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Email")).toHaveValue("")});
-                await waitFor(() => {expect(screen.queryByText("Email non valide")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.getByText("Email requis")).toBeInTheDocument()});
+                expect(screen.queryByText("Email non valide")).not.toBeInTheDocument();
+                expect(screen.getByText("Email requis")).toBeInTheDocument();
             });
         })
 
@@ -66,7 +62,7 @@ describe('test RegisterPage', function () {
                 fireEvent.click(testSubmit);
 
                 await waitFor(() => {expect(screen.getByPlaceholderText("Mot de passe")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.queryByText("Mot de passe requis")).not.toBeInTheDocument()});
+                expect(screen.queryByText("Mot de passe requis")).not.toBeInTheDocument();
             });
 
             test('test not password to password input field', async () => {
@@ -77,12 +73,11 @@ describe('test RegisterPage', function () {
                 const testSubmit = screen.getByDisplayValue("Inscription");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("​​Mot de passe requis");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Mot de passe")).toHaveValue("")});
-                await waitFor(() => {expect(screen.getByText("Mot de passe requis")).toBeInTheDocument()});
+                expect(screen.getByText("Mot de passe requis")).toBeInTheDocument();
             });
         });
+        
         describe('test Input ConfirmPassword', function () {
             test('test Confirm password to confirm password input field', async () => {
                 render(<RegisterPage />);
@@ -93,7 +88,7 @@ describe('test RegisterPage', function () {
                 fireEvent.click(testSubmit);
 
                 await waitFor(() => {expect(screen.getByPlaceholderText("Confirmation mot de passe")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.queryByText("Confirmation de mot de passe requis")).not.toBeInTheDocument()});
+                expect(screen.queryByText("Confirmation de mot de passe requis")).not.toBeInTheDocument();
             });
 
             test('test not Confirm password to confirm password input field', async () => {
@@ -104,10 +99,8 @@ describe('test RegisterPage', function () {
                 const testSubmit = screen.getByDisplayValue("Inscription");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("​Confirmation de mot de passe requis");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Confirmation mot de passe")).toHaveValue("")});
-                await waitFor(() => {expect(screen.getByText("Confirmation de mot de passe requis")).toBeInTheDocument()});
+                expect(screen.getByText("Confirmation de mot de passe requis")).toBeInTheDocument();
             });
 
             test('test Password and Confirm password different', async () => {
@@ -121,12 +114,10 @@ describe('test RegisterPage', function () {
                 const testSubmit = screen.getByDisplayValue("Inscription");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("Les mots de passe sont différents");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Mot de passe")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.getByPlaceholderText("Confirmation mot de passe")).toHaveValue("test1")});
-                await waitFor(() => {expect(screen.queryByText("Confirmation de mot de passe requis")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.getByText("Les mots de passe sont différents")).toBeInTheDocument()});
+                expect(screen.getByPlaceholderText("Confirmation mot de passe")).toHaveValue("test1");
+                expect(screen.queryByText("Confirmation de mot de passe requis")).not.toBeInTheDocument();
+                expect(screen.getByText("Les mots de passe sont différents")).toBeInTheDocument();
             });
 
             test('test Password and Confirm password equal', async () => {
@@ -141,10 +132,10 @@ describe('test RegisterPage', function () {
                 fireEvent.click(testSubmit);
 
                 await waitFor(() => {expect(screen.getByPlaceholderText("Mot de passe")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.getByPlaceholderText("Confirmation mot de passe")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.queryByText("Les mots de passe sont différents")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.queryByText("Confirmation de mot de passe requis")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.queryByText("Mot de passe requis")).not.toBeInTheDocument()});
+                expect(screen.getByPlaceholderText("Confirmation mot de passe")).toHaveValue("test");
+                expect(screen.queryByText("Les mots de passe sont différents")).not.toBeInTheDocument();
+                expect(screen.queryByText("Confirmation de mot de passe requis")).not.toBeInTheDocument();
+                expect(screen.queryByText("Mot de passe requis")).not.toBeInTheDocument();
             });
         });
     })

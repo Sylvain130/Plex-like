@@ -22,7 +22,6 @@ describe('test LoginPage', function () {
 
             test('test valid email to email input field', async () => {
                 render(<BrowserRouter><LoginPage /></BrowserRouter>);
-                
                 const inputEmail = screen.getByPlaceholderText("Email");
                 fireEvent.change(inputEmail, { target: { value: "test@mail.com" } })
 
@@ -30,8 +29,8 @@ describe('test LoginPage', function () {
                 fireEvent.click(testSubmit);
 
                 await waitFor(() => {expect(screen.getByPlaceholderText("Email")).toHaveValue("test@mail.com")});
-                await waitFor(() => {expect(screen.queryByText("Email requis")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.queryByText("Email non valide")).not.toBeInTheDocument()});
+                expect(screen.queryByText("Email requis")).not.toBeInTheDocument();
+                expect(screen.queryByText("Email non valide")).not.toBeInTheDocument();
             });
 
 
@@ -43,12 +42,9 @@ describe('test LoginPage', function () {
                 const testSubmit = screen.getByDisplayValue("se connecter");
                 userEvent.click(testSubmit);
 
-                //await screen.findByText("Email non valide");
-                //await waitFor(() => screen.getByText("Email non valide"));
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Email")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.queryByText("Email requis")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.getByText("Email non valide")).toBeInTheDocument()});
+                expect(screen.queryByText("Email requis")).not.toBeInTheDocument();
+                expect(screen.getByText("Email non valide")).toBeInTheDocument();
             });
 
             test('test not email to email input field',  async () => {
@@ -59,11 +55,9 @@ describe('test LoginPage', function () {
                 const testSubmit = screen.getByDisplayValue("se connecter");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("​Email requis");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Email")).toHaveValue("")});
-                await waitFor(() => {expect(screen.queryByText("Email non valide")).not.toBeInTheDocument()});
-                await waitFor(() => {expect(screen.getByText("Email requis")).toBeInTheDocument()});
+                expect(screen.queryByText("Email non valide")).not.toBeInTheDocument();
+                expect(screen.getByText("Email requis")).toBeInTheDocument();
             });
         })
 
@@ -77,11 +71,8 @@ describe('test LoginPage', function () {
                 fireEvent.click(testSubmit);
 
                 await waitFor(() => {expect(screen.getByPlaceholderText("Mot de passe")).toHaveValue("test")});
-                await waitFor(() => {expect(screen.queryByText("Mot de passe requis")).not.toBeInTheDocument()});
+                expect(screen.queryByText("Mot de passe requis")).not.toBeInTheDocument();
             });
-
-
-
 
             test('test not password to password input field',  async () => {
                 render(<BrowserRouter><LoginPage /></BrowserRouter>);
@@ -91,18 +82,16 @@ describe('test LoginPage', function () {
                 const testSubmit = screen.getByDisplayValue("se connecter");
                 fireEvent.click(testSubmit);
 
-                //await screen.findByText("​​Mot de passe requis");
-
                 await waitFor(() => {expect(screen.getByPlaceholderText("Mot de passe")).toHaveValue("")});
-                await waitFor(() => {expect(screen.getByText("Mot de passe requis")).toBeInTheDocument()});
+                expect(screen.getByText("Mot de passe requis")).toBeInTheDocument();
             });
         });
+
         test('test display Submit Button', function () {
             render(<BrowserRouter><LoginPage /></BrowserRouter>);
             const testInputPassword = screen.getByPlaceholderText("Mot de passe");
             expect(testInputPassword).toBeInTheDocument()
         })
-
     })
 
     test('test click on Register Button', function  async () {
