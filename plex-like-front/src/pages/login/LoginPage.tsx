@@ -1,21 +1,16 @@
 import { Box, TextField, Input, Link } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { FieldErrors, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 type FormValues = {
-  Email: string;
-  Password: string;
-};
-
-const errorMessageEmail = (errors: FieldErrors) => {
-  if (errors?.Email?.type === "required") {
-    return "Email requis";
-  } else if (errors?.Email?.type === "pattern") {
-    return "Email non valide";
-  }
+  email: string;
+  password: string;
 };
 
 const LoginPage = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -61,25 +56,33 @@ const LoginPage = (): JSX.Element => {
       >
         <TextField
           sx={styleInput}
-          {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
-          placeholder="Email"
-          helperText={errorMessageEmail(errors)}
+          {...register("email", {
+            required: `${t("LoginPage.ErrorRequiredEmail")}`,
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: `${t("LoginPage.ErrorInvalidEmail")}`,
+            },
+          })}
+          placeholder={t("LoginPage.Email")}
+          helperText={errors?.email?.message}
+          error={errors.email !== undefined}
         />
 
         <TextField
+          type="password"
           sx={styleInput}
-          {...register("Password", { required: true })}
-          placeholder="Mot de passe"
-          helperText={
-            errors?.Password?.type === "required" && "Mot de passe requis"
-          }
+          {...register("password", {
+            required: `${t("LoginPage.ErrorRequiredPassword")}`,
+          })}
+          placeholder={t("LoginPage.Password")}
+          helperText={errors?.password?.message}
+          error={errors.password !== undefined}
         />
 
-        <Input sx={styleInput} type="submit" value="se connecter" />
+        <Input sx={styleInput} type="submit" value={t("LoginPage.Login")} />
       </Box>
       <Link href="/Register" align="center">
-        {" "}
-        Pas inscrit? L'inscription c'est ici{" "}
+        {t("LoginPage.InvitRegister")}
       </Link>
     </Box>
   );

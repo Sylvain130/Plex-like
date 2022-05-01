@@ -1,0 +1,33 @@
+{
+  "FilmsPage": {
+    "text": "Here is the text of the film page"
+  },
+  "LayoutTopbarNavigation": {
+    "Home": "Home",
+    "Films": "Films",
+    "Series": "Series"
+  },
+  "LayoutTopbarSearch": {
+    "Search": "Search..."
+  },
+  "LoginPage": {
+    "Email": "Email",
+    "Password": "Password",
+    "ErrorInvalidEmail": "Invalid email",
+    "ErrorRequiredPassword": "Password required",
+    "ErrorRequiredEmail": "Email required",
+    "Login": "Log in",
+    "InvitRegister": "Not registered? Registration is here!"
+  },
+  "RegisterPage": {
+    "Email": "Email",
+    "Password": "Password",
+    "ErrorInvalidEmail": "Invalid email",
+    "ErrorRequiredPassword": "Password required",
+    "ErrorRequiredEmail": "Email required",
+    "Registration": "Registration",
+    "ConfirmPassword": "Confirm password",
+    "ErrorRequiredConfirmPassword": "Password confirmation required",
+    "ErrorDifferentPassword": "The passwords are different"
+  }
+}
