@@ -1,5 +1,5 @@
 import { styleContentMore } from "./StyleContentMore";
-import { Box, Button } from "@mui/material";
+import { Box, Button, SxProps } from "@mui/material";
 import Episode from "./components/episode/Episode";
 import ContentInformation from "../ContentInfo/ContentInformation";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,6 +12,10 @@ interface ISerieMore {
   setPopup: (popup: boolean) => void;
 }
 
+const styleButton: SxProps ={
+  minHeight: "1rem", 
+  minWidth: "1rem"
+}
 const ContentMore = ({
   contentInfo,
   saisons,
@@ -25,7 +29,7 @@ const ContentMore = ({
         <Button
           className="closeButton"
           onClick={() => setPopup(false)}
-          sx={{ minHeight: "1em", minWidth: "1em" }}
+          sx={styleButton}
           variant="text"
         >
           <CloseIcon sx={{ transform: "scale(1.5)" }} />

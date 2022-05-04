@@ -13,9 +13,9 @@ export const styleContentMore: SxProps = {
   gridTemplateColumns: "43% 57%",
   gridTemplateRows: "81% 19%",
 
-  margin: "5px",
+  margin: "0.3rem",
   background: alpha(theme.palette.background.paper, 0.95),
-  border: "1px solid",
+  border: "0.06rem solid",
   borderColor: theme.palette.primary.main,
 
   animationDuration: "1s",
@@ -36,7 +36,7 @@ export const styleContentMore: SxProps = {
   },
 
   "& >*": {
-    padding: "5px",
+    padding: "0.3rem",
   },
 
   "& .poster": {
@@ -47,7 +47,7 @@ export const styleContentMore: SxProps = {
   },
 
   "&  .closeButton": {
-    margin: "5px 5px auto auto",
+    margin: "0.3rem 0.3rem auto auto",
     justifyContent: "flex-end",
     alignItems: "flex-start",
     gridColumn: "2",

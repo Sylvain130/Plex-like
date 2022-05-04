@@ -4,6 +4,8 @@ import SaisonMenu from "./components/SaisonMenu";
 import { alpha } from "@mui/material/styles";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { ISaison } from "../../../../../../type/ISaison";
+import { useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 interface IEpisode {
   saisons: ISaison[];
@@ -14,7 +16,7 @@ const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
 
   const styleEpisodes: SxProps = {
     background: alpha(theme.palette.background.paper, 0.95),
-    border: "1px solid",
+    border: "0.06rem solid",
     borderColor: theme.palette.primary.main,
 
     display: "flex",
@@ -22,7 +24,7 @@ const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
   };
 
   const styleEpisode: SxProps = {
-    borderTop: "1px solid",
+    borderTop: "0.06rem solid",
     borderColor: theme.palette.primary.main,
 
     display: "grid",
@@ -33,45 +35,51 @@ const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
     display: "flex",
     flexDirection: "column",
     alignSelf: "flex-start",
-    margin: "5px",
+    margin: "0.3rem",
     gridColumn: "1",
     gridRow: "1",
   };
 
   const styleDescriptionEpisode: SxProps = {
-    margin: "5px",
+    margin: "0.3rem",
     gridColumn: "2",
     textAlign: "justify",
   };
 
-  var episode: JSX.Element[];
-  episode = [];
-  for (let i = 0; i < nbEpisode; i++) {
-    episode.push(
-      <Box sx={styleEpisode} key={i}>
-        <Box sx={styleNameDurationEpisode}>
-          <Typography>{saisons[numSaison].nameEpisode[i]}</Typography>
-          <Typography>
-            Durée : {saisons[numSaison].durationEpisode[i]}
-          </Typography>
-          <Button
-            className="playButton"
-            sx={{ height: "80px", alignSelf: "center flex-end" }}
-            variant="text"
-          >
-            <PlayCircleOutlineIcon sx={{ transform: "scale(2.5)" }} />
-          </Button>
-        </Box>
-        <Typography sx={styleDescriptionEpisode}>
-          {saisons[numSaison].descriptionEpisode[i]}
-        </Typography>
-      </Box>
-    );
+  const stylePlayButton: SxProps ={
+    height: "5rem", 
+    alignSelf: "center flex-end" 
   }
+
+  const episode: JSX.Element[] = [];
+  useEffect(() => {
+    for (let i = 0; i < nbEpisode; i++) {
+      episode.push(
+        <Box sx={styleEpisode} key={uuidv4()}>
+          <Box sx={styleNameDurationEpisode}>
+            <Typography>{saisons[numSaison].nameEpisode[i]}</Typography>
+            <Typography>
+              Durée : {saisons[numSaison].durationEpisode[i]}
+            </Typography>
+            <Button
+              className="playButton"
+              sx={stylePlayButton}
+              variant="text"
+            >
+              <PlayCircleOutlineIcon sx={{ transform: "scale(2.5)" }} />
+            </Button>
+          </Box>
+          <Typography sx={styleDescriptionEpisode}>
+            {saisons[numSaison].descriptionEpisode[i]}
+          </Typography>
+        </Box>
+      );
+    }
+  });
 
   return (
     <Box sx={styleEpisodes}>
-      <Box sx={{ minheight: "none", margin: "auto auto auto 5px" }}>
+      <Box sx={{ minheight: "none", margin: "auto auto auto 0.3rem" }}>
         <SaisonMenu saisons={saisons} />
       </Box>
       {episode}

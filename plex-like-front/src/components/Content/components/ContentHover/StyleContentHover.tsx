@@ -2,9 +2,9 @@ import { alpha, SxProps } from "@mui/material";
 import theme from "../../../../assets/Themes/Theme";
 
 export const styleSeriesHover: SxProps = {
-  margin: "5px",
+  margin: "0.3rem",
   background: alpha(theme.palette.background.paper, 0.95),
-  border: "1px solid",
+  border: "0.06rem solid",
   borderColor: theme.palette.primary.main,
 
   width: "8rem",

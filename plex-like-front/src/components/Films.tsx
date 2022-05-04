@@ -14,9 +14,9 @@ interface IFilms {
 }
 
 const styleFilms: SxProps = {
-  margin: "5px",
+  margin: "0.3 rem",
   background: alpha(theme.palette.background.paper, 0.95),
-  border: "1px solid",
+  border: "0.06rem solid",
   borderColor: theme.palette.primary.main,
 
   transition: theme.transitions.create(["height", "width"], { duration: "1s" }),
@@ -26,8 +26,8 @@ const styleFilms: SxProps = {
     transition: theme.transitions.create(["height", "width", "margin"], {
       duration: "0.8s",
     }),
-    margin: "0px",
-    width: "calc(8rem - 2px)",
+    margin: "0rem",
+    width: "calc(8rem - 0.12rem)",
     height: "11.4rem",
   },
   "& .description, .title": {
@@ -38,7 +38,7 @@ const styleFilms: SxProps = {
     transition: theme.transitions.create(["visibility"], { delay: "1s" }),
     textAlign: "center",
     position: "relative",
-    bottom: "5px",
+    bottom: "0.02",
     visibility: "visible",
     opacity: "1",
   },
@@ -61,7 +61,7 @@ const styleFilms: SxProps = {
     zIndex: "1",
 
     "& >*": {
-      margin: "auto 5px",
+      margin: "auto 0.3rem",
     },
 
     "& .poster": {
@@ -95,7 +95,7 @@ const styleFilms: SxProps = {
     },
 
     "& .description": {
-      top: "5px",
+      top: "0.6rem",
       textAlign: "justify",
 
       gridColumn: "2 / 2",
@@ -138,7 +138,9 @@ const styleFilms: SxProps = {
   },
 };
 
-
+const stylePoster: SxProps ={
+  maxWidth: "10rem"
+}
 
 const Films = ({
   title,
@@ -153,7 +155,7 @@ const Films = ({
       <Box
         className="poster"
         component="img"
-        sx={{ maxWidth: "10rem" }}
+        sx={stylePoster}
         alt="logo"
         src="./affiche-avengers.png"
       />

@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, SxProps } from "@mui/material";
 import AdditionalInfo from "./components/AdditionalInfo";
 import Presentation from "./components/Presentation";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
@@ -6,6 +6,11 @@ import { IContentInfo } from "../../../../type/IContentInfo";
 
 interface ISerieInformation {
   contentInfo: IContentInfo;
+}
+
+const stylePlayButton: SxProps = {
+  width: "100%", 
+  height: "100%"
 }
 const SerieInformation = ({
   contentInfo: {
@@ -41,7 +46,7 @@ const SerieInformation = ({
       </Box>
       <Button
         className="playButton"
-        sx={{ width: "100%", height: "100%" }}
+        sx={stylePlayButton}
         variant="text"
       >
         <PlayCircleOutlineIcon sx={{ transform: "scale(2.5)" }} />

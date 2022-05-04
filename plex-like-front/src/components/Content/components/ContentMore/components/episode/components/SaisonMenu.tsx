@@ -4,11 +4,17 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  SxProps,
 } from "@mui/material";
 import { ISaison } from "../../../../../../../type/ISaison";
 
 interface ISaisonMenu {
   saisons: ISaison[];
+}
+
+const styleForm : SxProps = {
+  minWidth: 120, 
+  margin: "0.6rem"
 }
 
 const SaisonMenu = ({ saisons }: ISaisonMenu): JSX.Element => {
@@ -18,7 +24,7 @@ const SaisonMenu = ({ saisons }: ISaisonMenu): JSX.Element => {
     setNumSaison(event.target.value);
   };
   return (
-    <FormControl sx={{ minWidth: 120, margin: "10px" }}>
+    <FormControl sx={styleForm}>
       <Select
         value={numSaison}
         onChange={handleChange}
@@ -27,8 +33,7 @@ const SaisonMenu = ({ saisons }: ISaisonMenu): JSX.Element => {
       >
         {saisons.map((c) => (
           <MenuItem key={c.numSaison} value={c.numSaison}>
-            {" "}
-            Saison {c.numSaison}{" "}
+            Saison {c.numSaison}
           </MenuItem>
         ))}
       </Select>
