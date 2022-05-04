@@ -1,6 +1,7 @@
-import { Box, TextField, Input, Link } from "@mui/material";
+import { Box, TextField, Input, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import { SxProps } from "@mui/system";
-import { FieldErrors, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
 type FormValues = {
@@ -81,11 +82,13 @@ const LoginPage = (): JSX.Element => {
 
         <Input sx={styleInput} type="submit" value={t("LoginPage.Login")} />
       </Box>
-      <Link href="/Register" align="center">
+
+      <Button variant="text" component={Link} to="/Register">
         {t("LoginPage.InvitRegister")}
-      </Link>
+      </Button>
     </Box>
   );
 };
 
 export default LoginPage;
+
