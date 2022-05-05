@@ -10,7 +10,7 @@ export const styleSeriesHover: SxProps = {
   width: "8rem",
   height: "13rem",
   transition: theme.transitions.create(["height", "width"], {
-    duration: "1s",
+    duration: "0.7s",
   }),
 
   display: "grid",
@@ -19,10 +19,10 @@ export const styleSeriesHover: SxProps = {
 
   "& .poster": {
     transition: theme.transitions.create(["height", "width", "padding"], {
-      duration: "0.8s",
+      duration: "0.6s",
     }),
-    margin: "0px",
-    width: "calc(8rem - 2px)",
+    margin: "0",
+    width: "calc(8rem - 0.125rem)",
     height: "11.4rem",
     gridRow: "1",
   },
@@ -31,7 +31,7 @@ export const styleSeriesHover: SxProps = {
     transition: theme.transitions.create(["visibility"], { delay: "1s" }),
     textAlign: "center",
     position: "relative",
-    bottom: "5px",
+    bottom: "0.3rem",
     visibility: "visible",
     opacity: "1",
     gridRow: "2",
@@ -52,7 +52,7 @@ export const styleSeriesHover: SxProps = {
     zIndex: "1",
 
     "& >*": {
-      padding: "5px",
+      padding: "0.3rem",
     },
 
     "& .poster": {
@@ -71,8 +71,8 @@ export const styleSeriesHover: SxProps = {
     "& .presentation, .additionalInfo, .playButton, .episode, .playButton, .moreButton":
       {
         transition: theme.transitions.create(["opacity"], {
-          duration: "0.5s",
-          delay: "0.7s",
+          duration: "0.3s",
+          delay: "0.5s",
         }),
         opacity: "1",
         visibility: "visible",
@@ -96,7 +96,7 @@ export const styleSeriesHover: SxProps = {
     },
 
     "& .moreButton": {
-      margin: "auto 10px 10px auto",
+      margin: "auto 0.6rem 0.6rem auto",
       justifyContent: "flex-end",
       alignItems: "flex-end",
       gridColumn: "2",

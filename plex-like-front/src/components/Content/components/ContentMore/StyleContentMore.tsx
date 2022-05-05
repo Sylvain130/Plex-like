@@ -13,12 +13,15 @@ export const styleContentMore: SxProps = {
   gridTemplateColumns: "43% 57%",
   gridTemplateRows: "81% 19%",
 
-  margin: "0.3rem",
+  margin: "0rem",
   background: alpha(theme.palette.background.paper, 0.95),
-  border: "0.06rem solid",
-  borderColor: theme.palette.primary.main,
 
-  animationDuration: "1s",
+  boxShadow:"inset 0 0 0 0.06rem",
+  color: theme.palette.primary.main,
+	boxSizing: "border-box",
+  width: "100%",
+
+  animationDuration: "0.5s",
   animationName: "glissement",
   animationIterationCount: "1",
   animationFillMode: "forwards",
@@ -72,6 +75,7 @@ export const styleContentMore: SxProps = {
   },
 
   "& .episode": {
+    padding: "0",
     margin: "0",
     width: "100%",
 

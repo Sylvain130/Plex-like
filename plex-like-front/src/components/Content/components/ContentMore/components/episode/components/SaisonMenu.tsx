@@ -13,7 +13,8 @@ interface ISaisonMenu {
 }
 
 const styleForm : SxProps = {
-  minWidth: 120, 
+  width: "20%",
+  maxWidth: "8rem", 
   margin: "0.6rem"
 }
 

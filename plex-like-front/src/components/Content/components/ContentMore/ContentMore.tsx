@@ -12,32 +12,30 @@ interface ISerieMore {
   setPopup: (popup: boolean) => void;
 }
 
-const styleButton: SxProps ={
-  minHeight: "1rem", 
-  minWidth: "1rem"
-}
+const styleButton: SxProps = {
+  minHeight: "1rem",
+  minWidth: "1rem",
+};
 const ContentMore = ({
   contentInfo,
   saisons,
   setPopup,
 }: ISerieMore): JSX.Element => {
   return (
-    <Box className="Series" sx={styleContentMore}>
+    <Box sx={styleContentMore}>
       <ContentInformation contentInfo={contentInfo} />
+      <Button
+        className="closeButton"
+        onClick={() => setPopup(false)}
+        sx={styleButton}
+        variant="text"
+      >
+        <CloseIcon sx={{ transform: "scale(1.5)" }} />
+      </Button>
       {saisons && (
-        <>
-        <Button
-          className="closeButton"
-          onClick={() => setPopup(false)}
-          sx={styleButton}
-          variant="text"
-        >
-          <CloseIcon sx={{ transform: "scale(1.5)" }} />
-        </Button>
-        <Box className="episode">
-          <Episode saisons={saisons} numSaison={1} />
-        </Box>
-        </>
+          <Box className="episode">
+            <Episode saisons={saisons} numSaison={1} />
+          </Box>
       )}
     </Box>
   );
