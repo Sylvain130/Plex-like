@@ -1,4 +1,5 @@
 import { Box, Rating, SxProps, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 interface IAdditionalinfo {
   date: string;
@@ -48,6 +49,7 @@ const AdditionalInfo = ({
   actor,
   publicmark,
 }: IAdditionalinfo): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <Box sx={styleAdditionalInfo}>
       <Box className="mark">
@@ -60,9 +62,12 @@ const AdditionalInfo = ({
           readOnly
         />
       </Box>
-      <Typography className="realisator">Réalisateur: {realisator}</Typography>
+      <Typography className="realisator">
+        {t("ContentContentInfoAdditionalInfo.Realisator")} {realisator}
+      </Typography>
       <Typography className="actor">
-        Acteurs: {actor[0]} / {actor[1]} / {actor[2]} / {actor[3]}
+        {t("ContentContentInfoAdditionalInfo.Actor")} {actor[0]} / {actor[1]} /{" "}
+        {actor[2]} / {actor[3]}
       </Typography>
     </Box>
   );

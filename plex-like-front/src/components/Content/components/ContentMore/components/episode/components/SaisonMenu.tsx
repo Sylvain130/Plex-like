@@ -7,6 +7,7 @@ import {
   SxProps,
 } from "@mui/material";
 import { ISaison } from "../../../../../../../type/ISaison";
+import { useTranslation } from "react-i18next";
 
 interface ISaisonMenu {
   saisons: ISaison[];
@@ -19,11 +20,12 @@ const styleForm : SxProps = {
 }
 
 const SaisonMenu = ({ saisons }: ISaisonMenu): JSX.Element => {
+  const { t } = useTranslation();
   const [numSaison, setNumSaison] = React.useState("");
-
   const handleChange = (event: SelectChangeEvent) => {
     setNumSaison(event.target.value);
   };
+
   return (
     <FormControl sx={styleForm}>
       <Select
@@ -34,7 +36,7 @@ const SaisonMenu = ({ saisons }: ISaisonMenu): JSX.Element => {
       >
         {saisons.map((c) => (
           <MenuItem key={c.numSaison} value={c.numSaison}>
-            Saison {c.numSaison}
+            {t("ContentContentMoreEpisodeSaisonMenu.Season")} {c.numSaison}
           </MenuItem>
         ))}
       </Select>

@@ -1,5 +1,6 @@
 import { Box, SxProps, Typography } from "@mui/material";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 interface IPresentation {
   title: string;
@@ -39,13 +40,17 @@ const Presentation = ({
   date,
   genre,
 }: IPresentation): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <Box sx={stylePresentation}>
       <Typography className="title">{title}</Typography>
       <Typography className="description">{description}</Typography>
-      <Typography className="genre">Genre : {genre}</Typography>
+      <Typography className="genre">
+        {t("ContentContentInfoPresentation.Genre")} {genre}
+      </Typography>
       <Typography className="date">
-        Sortie : {moment(date).format("DD-MM-YYYY")}
+        {t("ContentContentInfoPresentation.Release")}
+        {moment(date).format("DD-MM-YYYY")}
       </Typography>
     </Box>
   );

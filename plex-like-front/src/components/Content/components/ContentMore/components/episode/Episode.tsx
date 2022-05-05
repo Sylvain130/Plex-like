@@ -5,6 +5,7 @@ import { alpha } from "@mui/material/styles";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { ISaison } from "../../../../../../type/ISaison";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslation } from "react-i18next";
 
 interface IEpisode {
   saisons: ISaison[];
@@ -21,7 +22,7 @@ const styleEpisode: SxProps = {
 
 const styleEpisodes: SxProps = {
   width: "100%",
-  
+
   background: alpha(theme.palette.background.paper, 0.95),
   border: "0.06rem solid",
   borderColor: theme.palette.primary.main,
@@ -39,8 +40,6 @@ const styleNameDurationEpisode: SxProps = {
   gridRow: "1",
 };
 
-
-
 const styleDescriptionEpisode: SxProps = {
   margin: "0.3rem",
   gridColumn: "2",
@@ -52,6 +51,7 @@ const stylePlayButton: SxProps = {
   alignSelf: "center flex-end",
 };
 const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
+  const { t } = useTranslation();
   const displayEpisode = () => {
     const episode: JSX.Element[] = [];
     const nbEpisode: number = saisons[numSaison].nameEpisode.length;
@@ -62,7 +62,8 @@ const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
           <Box sx={styleNameDurationEpisode}>
             <Typography>{saisons[numSaison].nameEpisode[i]}</Typography>
             <Typography>
-              Durée : {saisons[numSaison].durationEpisode[i]}
+              {t("ContentContentMoreEpisode.Duration")}{" "}
+              {saisons[numSaison].durationEpisode[i]}
             </Typography>
             <Button className="playButton" sx={stylePlayButton} variant="text">
               <PlayCircleOutlineIcon sx={{ transform: "scale(2.5)" }} />
