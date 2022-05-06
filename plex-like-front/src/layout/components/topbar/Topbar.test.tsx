@@ -12,18 +12,19 @@ jest.mock('./components/Searchbar', (): unknown => {
 
 
 describe('test Topbar', function () {
-    test('test display Navigation', function () {
+    test('display Navigation', function () {
         render(<Topbar /> );
         const testNavigation = screen.getByTestId("mockNavigation");
         expect(testNavigation).toBeInTheDocument();
     })
-    test('test display Searchbar', function () {
+    
+    test('display Searchbar', function () {
         render(<Topbar />);
         const testSearchbar = screen.getByTestId("mockSearchbar");
         expect(testSearchbar).toBeInTheDocument();
     })
 
-    test('test logo must have src = "./plex-logo.png" and alt = "logo"', () => {
+    test('logo must have src = "./plex-logo.png" and alt = "logo"', () => {
         render(<Topbar />);
         const logo = screen.getByRole('img');
         expect(logo).toHaveAttribute('src', './plex-logo.png');
