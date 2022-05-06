@@ -29,5 +29,19 @@
     "ConfirmPassword": "Confirm password",
     "ErrorRequiredConfirmPassword": "Password confirmation required",
     "ErrorDifferentPassword": "The passwords are different"
+  },
+  "ContentContentInfoAdditionalInfo":{
+    "Realisator": "Realistor : {{realisator}}",
+    "Actor": "Actor : {{actor}}"
+  },
+  "ContentContentInfoPresentation":{
+    "Genre": "Genre : {{genre}}",
+    "Release": "Release : {{date}}"
+  },
+  "ContentContentMoreEpisodeSaisonMenu":{
+    "Season": "Season : {{nbSaison}}"
+  },
+  "ContentContentMoreEpisode":{
+    "Duration": "Duration : {{duration}}"
   }
 }

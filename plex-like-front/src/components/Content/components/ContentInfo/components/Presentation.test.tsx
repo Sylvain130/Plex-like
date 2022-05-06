@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-import AdditionalInfo from "./AdditionalInfo";
 import CustomRender from "../../../../../CustomRender";
 import { getI18n } from "react-i18next";
 import Presentation from "./Presentation";
