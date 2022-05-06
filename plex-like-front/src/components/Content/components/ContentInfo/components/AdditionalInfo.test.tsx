@@ -1,4 +1,3 @@
-
 import { screen } from "@testing-library/react";
 import AdditionalInfo from "./AdditionalInfo";
 import CustomRender from "../../../../../CustomRender";
@@ -35,7 +34,9 @@ describe("test AdditionalInfo", function () {
       />
     );
     const testRealisator = screen.getByText(
-      `${i18n.t("ContentContentInfoAdditionalInfo.Realisator", {realisator: realisator})}`
+      `${i18n.t("ContentContentInfoAdditionalInfo.Realisator", {
+        realisator: realisator,
+      })}`
     );
     expect(testRealisator).toBeInTheDocument();
   });
@@ -50,7 +51,9 @@ describe("test AdditionalInfo", function () {
       />
     );
     const testActor = screen.getByText(
-      `${i18n.t("ContentContentInfoAdditionalInfo.Actor", {actor: `${actor[0]} / ${actor[1]} / ${actor[2]} / ${actor[3]}`})}`
+      `${i18n.t("ContentContentInfoAdditionalInfo.Actor", {
+        actor: `${actor[0]} / ${actor[1]} / ${actor[2]} / ${actor[3]}`,
+      })}`
     );
     expect(testActor).toBeInTheDocument();
   });

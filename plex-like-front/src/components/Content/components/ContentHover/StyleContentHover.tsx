@@ -42,7 +42,7 @@ export const styleContentHover: SxProps = {
       visibility: "hidden",
       opacity: "0",
     },
-
+  
   "&:hover ": {
     width: "25rem",
     height: "21rem",

@@ -13,14 +13,8 @@ jest.mock("./components/ContentMore/ContentMore.tsx", (): unknown => {
   return (): JSX.Element => <div data-testid="mockContentMore" />;
 });
 
-const mockB = jest.fn();
 jest.mock("./components/ContentHover/ContentHover.tsx", (): unknown => {
-  return ({ setPopup }: IContentHover): JSX.Element => {
-      useEffect(() => {
-          setPopup(mockB())
-      }, [])
-    return <div data-testid="mockContentHover" />;
-  };
+  return (): JSX.Element => <div data-testid="mockContentHover" />;
 });
 
 
@@ -44,16 +38,15 @@ const contentInfo: IContentInfo = {
   genre,
 };
 
+const setPopup = jest.fn(popup => popup=true);
 describe("test Content", function () {
   test("display Content Hover", function () {
-    mockB.mockReturnValue(false);  
-    render(<Content contentInfo={contentInfo} />);
+    render(<Content contentInfo={contentInfo} setPopup={setPopup} popup={false}/>);
     const testContentHover = screen.getByTestId("mockContentHover");
     expect(testContentHover).toBeInTheDocument();
   });
   test("display Content More if click on more button", function () {
-    mockB.mockReturnValue(true);
-    render(<Content contentInfo={contentInfo} />);
+    render(<Content contentInfo={contentInfo}  setPopup={setPopup} popup={true}/>);
     const testContentMore = screen.getByTestId("mockContentMore");
     expect(testContentMore).toBeInTheDocument();
   });

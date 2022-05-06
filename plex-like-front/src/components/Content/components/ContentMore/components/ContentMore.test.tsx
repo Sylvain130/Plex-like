@@ -70,7 +70,7 @@ describe("test Content More", function () {
     await waitFor(() => {expect(setPopup.mock.calls.length).toBe(1)});
   });
 
-  test("no display episode when content is a film ", function () {
+  test("no display episode when content is a film", function () {
     render(<ContentMore contentInfo={contentInfo} setPopup={setPopup} />);
     expect(screen.queryByTestId(`mockEpisode`)).not.toBeInTheDocument();
   });

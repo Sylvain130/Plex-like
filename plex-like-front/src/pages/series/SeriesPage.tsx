@@ -1,4 +1,5 @@
 import { Box, SxProps } from "@mui/material";
+import { useState } from "react";
 import Content from "../../components/Content/Content";
 import { ISaison } from "../../type/ISaison";
 
@@ -74,28 +75,34 @@ const stylePageSeries: SxProps = {
   gridTemplateRows: "repeat(10,13rem)",
 };
 
-var rows: JSX.Element[];
-rows = [];
-for (let i = 0; i < 5; i++) {
-  rows.push(
-    <Content key={i}
-      contentInfo={{
-        title,
-        poster,
-        description,
-        date,
-        realisator,
-        actor,
-        publicmark,
-        genre,}
-      }
-      saisons={saisons}
-      />
-  );
-}
-
 const SeriesPage = (): JSX.Element => {
-  return <Box sx={stylePageSeries}>{rows}</Box>;
+  const [popup, setPopup] = useState(false);
+  const displayContent = () => {
+    var componentSerie: JSX.Element[];
+    componentSerie = [];
+    for (let i = 0; i < 5; i++) {
+      componentSerie.push(
+        <Content
+          key={i}
+          contentInfo={{
+            title,
+            poster,
+            description,
+            date,
+            realisator,
+            actor,
+            publicmark,
+            genre,
+          }}
+          saisons={saisons}
+          setPopup={setPopup}
+          popup={popup}
+        />
+      );
+    }
+    return componentSerie;
+  };
+  return <Box sx={stylePageSeries}>{displayContent()}</Box>;
 };
 
 export default SeriesPage;

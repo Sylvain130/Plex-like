@@ -1,4 +1,6 @@
 import { Box, SxProps } from "@mui/material";
+import { display } from "@mui/system";
+import { useState } from "react";
 import Content from "../../components/Content/Content";
 
 const title: string = "Avengers";
@@ -24,28 +26,33 @@ const stylePageFilms: SxProps = {
   gridTemplateRows: "repeat(10,13rem)",
 };
 
-var componentFilm: JSX.Element[];
-componentFilm = [];
-for (let i = 0; i < 100; i++) {
-  componentFilm.push(
-    <Content
-      contentInfo={{
-        title,
-        poster,
-        description,
-        date,
-        realisator,
-        actor,
-        publicmark,
-        genre,
-      }}
-      key={i}
-    />
-  );
-}
-
 const FilmsPage = (): JSX.Element => {
-  return <Box sx={stylePageFilms}>{componentFilm}</Box>;
+  const [popup, setPopup] = useState(false);
+  const displayContent = () => {
+    var componentFilm: JSX.Element[];
+    componentFilm = [];
+    for (let i = 0; i < 100; i++) {
+      componentFilm.push(
+        <Content
+          contentInfo={{
+            title,
+            poster,
+            description,
+            date,
+            realisator,
+            actor,
+            publicmark,
+            genre,
+          }}
+          setPopup={setPopup}
+          popup={popup}
+        />
+      );
+    }
+    return componentFilm;
+  };
+
+  return <Box sx={stylePageFilms}>{displayContent()}</Box>;
 };
 
 export default FilmsPage;

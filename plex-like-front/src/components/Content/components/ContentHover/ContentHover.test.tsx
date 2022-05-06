@@ -34,25 +34,25 @@ const contentInfo: IContentInfo = {
 
 describe("test Content Hover", function () {
   test("display ContentInformation", function () {
-    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} />);
+    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} popup={false} />);
     const testContentInformation = screen.getByTestId("mockContentInformation");
     expect(testContentInformation).toBeInTheDocument();
   });
 
   test("display title and date", function () {
-    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} />);
+    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} popup={false} />);
     const testTitleDate = screen.getByText(`${contentInfo.title} - ${moment(contentInfo.date).format("YYYY")}`);
     expect(testTitleDate).toBeInTheDocument();
   });
 
   test("display moreButton", function () {
-    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} />);
+    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} popup={false} />);
     const testMoreButton = screen.getByLabelText("moreButton");
     expect(testMoreButton).toBeInTheDocument();
   });
 
   test("click moreButton", async function () {
-    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} />);
+    render(<ContentHover contentInfo={contentInfo} setPopup={setPopup} popup={false} />);
     const testMoreButton = screen.getByLabelText("moreButton");
     fireEvent.click(testMoreButton);
 
