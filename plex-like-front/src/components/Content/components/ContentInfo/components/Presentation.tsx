@@ -46,11 +46,10 @@ const Presentation = ({
       <Typography className="title">{title}</Typography>
       <Typography className="description">{description}</Typography>
       <Typography className="genre">
-        {t("ContentContentInfoPresentation.Genre")} {genre}
+        {t("ContentContentInfoPresentation.Genre", {genre: genre})}
       </Typography>
       <Typography className="date">
-        {t("ContentContentInfoPresentation.Release")}
-        {moment(date).format("DD-MM-YYYY")}
+        {t("ContentContentInfoPresentation.Release", {date: moment(date).format("DD-MM-YYYY")})}
       </Typography>
     </Box>
   );

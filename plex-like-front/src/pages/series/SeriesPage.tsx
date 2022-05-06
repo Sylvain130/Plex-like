@@ -44,14 +44,14 @@ const saisons: ISaison[] = [
   {
     numSaison: 2,
     nameEpisode: [
-      "Le début de la fin",
-      "Quatre marks",
-      "Lune de trahison",
-      "Des banquets, des bâtards et des obsèques",
-      "Désirs inassouvis",
-      "Espèces rares",
-      "Avant la chute",
-      "Bien plus",
+      "Un grain de vérité",
+      "Kaer Mohren",
+      "Tant de pertes",
+      "Le renseignement rédanien",
+      "Volte-face",
+      "De chers amis",
+      "Voleth Meir",
+      "La Famille",
     ],
     durationEpisode: [61, 61, 67, 62, 59, 59, 47, 59],
     descriptionEpisode: [

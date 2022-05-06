@@ -6,10 +6,10 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { ISaison } from "../../../../../../type/ISaison";
 import { v4 as uuidv4 } from "uuid";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 interface IEpisode {
   saisons: ISaison[];
-  numSaison: number;
 }
 
 const styleEpisode: SxProps = {
@@ -50,27 +50,30 @@ const stylePlayButton: SxProps = {
   height: "5rem",
   alignSelf: "center flex-end",
 };
-const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
+
+
+const Episode = ({saisons}: IEpisode): JSX.Element => {
   const { t } = useTranslation();
+
+  const [numSaison, setNumSaison] = useState(1);
   const displayEpisode = () => {
     const episode: JSX.Element[] = [];
-    const nbEpisode: number = saisons[numSaison].nameEpisode.length;
+    const nbEpisode: number = saisons[numSaison-1].nameEpisode.length;
 
     for (let i = 0; i < nbEpisode; i++) {
       episode.push(
         <Box sx={styleEpisode} key={uuidv4()}>
           <Box sx={styleNameDurationEpisode}>
-            <Typography>{saisons[numSaison].nameEpisode[i]}</Typography>
+            <Typography>{saisons[numSaison-1].nameEpisode[i]}</Typography>
             <Typography>
-              {t("ContentContentMoreEpisode.Duration")}{" "}
-              {saisons[numSaison].durationEpisode[i]}
+              {t("ContentContentMoreEpisode.Duration", {duration:saisons[numSaison-1].durationEpisode[i]})}
             </Typography>
             <Button className="playButton" sx={stylePlayButton} variant="text">
               <PlayCircleOutlineIcon sx={{ transform: "scale(2.5)" }} />
             </Button>
           </Box>
           <Typography sx={styleDescriptionEpisode}>
-            {saisons[numSaison].descriptionEpisode[i]}
+            {saisons[numSaison-1].descriptionEpisode[i]}
           </Typography>
         </Box>
       );
@@ -80,7 +83,7 @@ const Episode = ({ saisons, numSaison }: IEpisode): JSX.Element => {
 
   return (
     <Box sx={styleEpisodes}>
-      <SaisonMenu saisons={saisons} />
+      <SaisonMenu saisons={saisons} setNumSaison={setNumSaison} numSaison={numSaison}    />
       {displayEpisode()}
     </Box>
   );

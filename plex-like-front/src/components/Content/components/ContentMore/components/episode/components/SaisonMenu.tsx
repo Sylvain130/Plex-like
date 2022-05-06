@@ -11,32 +11,35 @@ import { useTranslation } from "react-i18next";
 
 interface ISaisonMenu {
   saisons: ISaison[];
+  setNumSaison: (numSaison: number) => void;
+  numSaison: number;
 }
 
-const styleForm : SxProps = {
+const styleForm: SxProps = {
   width: "20%",
-  maxWidth: "8rem", 
-  margin: "0.6rem"
-}
+  maxWidth: "8rem",
+  margin: "0.6rem",
+};
 
-const SaisonMenu = ({ saisons }: ISaisonMenu): JSX.Element => {
+const SaisonMenu = ({ saisons, setNumSaison, numSaison}: ISaisonMenu): JSX.Element => {
   const { t } = useTranslation();
-  const [numSaison, setNumSaison] = React.useState("");
+  const [numSaisonString, setNumSaisonString] = React.useState("1");
   const handleChange = (event: SelectChangeEvent) => {
-    setNumSaison(event.target.value);
+    setNumSaisonString(event.target.value);
+    setNumSaison(+numSaisonString);
   };
 
   return (
     <FormControl sx={styleForm}>
       <Select
-        value={numSaison}
+        value={numSaisonString}
         onChange={handleChange}
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
       >
         {saisons.map((c) => (
           <MenuItem key={c.numSaison} value={c.numSaison}>
-            {t("ContentContentMoreEpisodeSaisonMenu.Season")} {c.numSaison}
+            {t("ContentContentMoreEpisodeSaisonMenu.Season", {nbSaison: c.numSaison})}
           </MenuItem>
         ))}
       </Select>

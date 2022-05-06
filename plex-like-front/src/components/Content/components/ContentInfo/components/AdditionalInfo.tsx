@@ -63,11 +63,10 @@ const AdditionalInfo = ({
         />
       </Box>
       <Typography className="realisator">
-        {t("ContentContentInfoAdditionalInfo.Realisator")} {realisator}
+        {t("ContentContentInfoAdditionalInfo.Realisator", {realisator: realisator})}
       </Typography>
       <Typography className="actor">
-        {t("ContentContentInfoAdditionalInfo.Actor")} {actor[0]} / {actor[1]} /{" "}
-        {actor[2]} / {actor[3]}
+        {t("ContentContentInfoAdditionalInfo.Actor", {actor: `${actor[0]} / ${actor[1]} / ${actor[2]} / ${actor[3]}`})}
       </Typography>
     </Box>
   );

@@ -26,6 +26,7 @@ const ContentMore = ({
       <ContentInformation contentInfo={contentInfo} />
       <Button
         className="closeButton"
+        aria-label="closeButton"
         onClick={() => setPopup(false)}
         sx={styleButton}
         variant="text"
@@ -33,9 +34,9 @@ const ContentMore = ({
         <CloseIcon sx={{ transform: "scale(1.5)" }} />
       </Button>
       {saisons && (
-          <Box className="episode">
-            <Episode saisons={saisons} numSaison={1} />
-          </Box>
+        <Box className="episode">
+          <Episode saisons={saisons} />
+        </Box>
       )}
     </Box>
   );

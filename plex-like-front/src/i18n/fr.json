@@ -31,17 +31,17 @@
     "ErrorDifferentPassword": "Les mots de passe sont différents"
   },
   "ContentContentInfoAdditionalInfo":{
-    "Realisator": "Realisteur :",
-    "Actor": "Acteur"
+    "Realisator": "Realisteur :{{realisator}}",
+    "Actor": "Acteur :{{actor}}"
   },
   "ContentContentInfoPresentation":{
-    "Genre": "Genre :",
-    "Release": "Sortie :"
+    "Genre": "Genre :{{genre}}",
+    "Release": "Sortie :{{date}}"
   },
   "ContentContentMoreEpisodeSaisonMenu":{
-    "Season": "Saison "
+    "Season": "Saison :{{nbSaison}}"
   },
   "ContentContentMoreEpisode":{
-    "Duration": "Durée "
+    "Duration": "Durée :{{duration}}"
   }
 }
