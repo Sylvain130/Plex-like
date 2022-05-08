@@ -17,6 +17,10 @@ const getDesignTokens = (mode: PaletteMode) => ({
           text: {
             primary: "#F0F8FF",
             secondary: "#fefefe",
+            
+          },
+          error:{
+            main:"#f44336",
           },
 
           primary: {

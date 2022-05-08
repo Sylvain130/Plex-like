@@ -17,7 +17,9 @@
     "ErrorRequiredPassword": "Password required",
     "ErrorRequiredEmail": "Email required",
     "Login": "Log in",
-    "InvitRegister": "Not registered? Registration is here!"
+    "InvitRegister": "Not registered? Registration is here!",
+    "ErrorAccountDoesNotExists": "This email is not associated with an account",
+    "ErrorInvalidPassword": "The password is invalid"
   },
   "RegisterPage": {
     "Email": "Email",
@@ -28,7 +30,8 @@
     "Registration": "Registration",
     "ConfirmPassword": "Confirm password",
     "ErrorRequiredConfirmPassword": "Password confirmation required",
-    "ErrorDifferentPassword": "The passwords are different"
+    "ErrorDifferentPassword": "The passwords are different",
+    "ErrorAccountAlreadyExists": "This email is already associated with an account"
   },
   "ContentContentInfoAdditionalInfo":{
     "Realisator": "Realistor : {{realisator}}",

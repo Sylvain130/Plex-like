@@ -1,11 +1,12 @@
 
 import { useTranslation } from "react-i18next";
-import { Box, TextField, Input, Link, Typography } from "@mui/material";
+import { Box, TextField, Input, Link, Typography} from "@mui/material";
 import { SxProps } from "@mui/system";
 import { useState } from "react";
-import { FieldErrors, useForm } from "react-hook-form";
 import base64 from "react-native-base64";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import theme from "../../assets/Themes/Theme";
 
 type FormValues = {
   email: string;
@@ -39,8 +40,15 @@ const styleLoginPage: SxProps = {
 };
 
 const styleTypo: SxProps = {
-  color: "#f44336",
+  color: theme.palette.error.main,
   fontSize: "0.75rem",
+};
+
+const styleLink: SxProps = {
+  color: theme.palette.text.primary,
+  fontSize: "1rem",
+  textAlign: "center"
+  
 };
 
 const LoginPage = (): JSX.Element => {
@@ -105,8 +113,7 @@ const LoginPage = (): JSX.Element => {
         />
         {errorUser ? (
           <Typography sx={styleTypo}>
-            {" "}
-            Cet email n'est pas associé à un compte
+            {t("LoginPage.ErrorAccountDoesNotExists")}
           </Typography>
         ) : (
           <></>
@@ -124,16 +131,17 @@ const LoginPage = (): JSX.Element => {
           onChange={() => setErrorPassword(false)}
         />
         {errorPassword ? (
-          <Typography sx={styleTypo}> Le mot de passe est invalide</Typography>
+          <Typography sx={styleTypo}> {t("LoginPage.ErrorInvalidPassword")}</Typography>
         ) : (
           <></>
         )}
 
         <Input sx={styleInput} type="submit" value={t("LoginPage.Login")} />
       </Box>
-      <Button variant="text" component={Link} to="/Register">
+
+      <Link href="/Register" sx={styleLink}>
         {t("LoginPage.InvitRegister")}
-      </Button>
+      </Link>
     </Box>
   );
 };

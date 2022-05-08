@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import base64 from "react-native-base64";
 import { useNavigate } from "react-router-dom";
+import theme from "../../assets/Themes/Theme";
 
 type FormValues = {
   email: string;
@@ -24,7 +25,7 @@ const styleInput: SxProps = {
 };
 
 const styleTypo: SxProps = {
-  color: "#f44336",
+  color: theme.palette.error.main,
   fontSize: "0.75rem",
 };
 
@@ -122,8 +123,7 @@ const RegisterPage = (): JSX.Element => {
 
         {errorUser ? (
           <Typography sx={styleTypo}>
-            {" "}
-            Cet email est déjà associé à un compte
+            {t("RegisterPage.ErrorAccountAlreadyExists")}
           </Typography>
         ) : (
           <></>
