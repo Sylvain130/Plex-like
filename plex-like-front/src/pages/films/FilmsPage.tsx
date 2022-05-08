@@ -18,7 +18,6 @@ const actor: string[] = [
 ];
 const publicmark: number = 4.1;
 const genre: string = "Heroic fantasy";
-
 const stylePageFilms: SxProps = {
   display: "grid",
   gridGap: "0.4rem",

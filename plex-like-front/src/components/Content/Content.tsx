@@ -1,4 +1,3 @@
-
 import ContentHover from "./components/ContentHover/ContentHover";
 import ContentMore from "./components/ContentMore/ContentMore";
 import { IContentInfo } from "../../type/IContentInfo";
