@@ -29,5 +29,19 @@
     "ConfirmPassword": "Confirmation mot de passe",
     "ErrorRequiredConfirmPassword": "Confirmation mot de passe requis",
     "ErrorDifferentPassword": "Les mots de passe sont différents"
+  },
+  "ContentContentInfoAdditionalInfo":{
+    "Realisator": "Realisteur : {{realisator}}",
+    "Actor": "Acteur : {{actor}}"
+  },
+  "ContentContentInfoPresentation":{
+    "Genre": "Genre : {{genre}}",
+    "Release": "Sortie : {{date}}"
+  },
+  "ContentContentMoreEpisodeSaisonMenu":{
+    "Season": "Saison : {{nbSaison}}"
+  },
+  "ContentContentMoreEpisode":{
+    "Duration": "Durée : {{duration}}"
   }
 }

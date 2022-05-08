@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, waitFor } from "@testing-library/react";
 import { screen } from "@testing-library/dom"
 import RegisterPage from "./RegisterPage";
 import { getI18n } from "react-i18next";

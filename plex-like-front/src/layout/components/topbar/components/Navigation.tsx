@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import MovieIcon from "@mui/icons-material/Movie";
 import { useTranslation } from "react-i18next";
+import theme from "../../../../assets/Themes/Theme";
 
 const styleNavigation: SxProps = {
   width: "50%",
@@ -11,10 +12,11 @@ const styleNavigation: SxProps = {
   justifyContent: "space-around",
 };
 
-const styleButton: SxProps = {
-  padding: "0.3rem,0.6rem",
-  margin: "0.6rem",
-};
+const styleButton: SxProps ={
+    padding: '0.3rem 0.6rem',
+    margin: '0.3rem',
+    border: "0.06rem solid" + theme.palette.primary.main,
+}
 const Navigation = (): JSX.Element => {
   const { t } = useTranslation();
   return (
