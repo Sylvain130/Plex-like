@@ -33,6 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-api": "cd ../plex-like-back && venv\\scripts\\activate && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"

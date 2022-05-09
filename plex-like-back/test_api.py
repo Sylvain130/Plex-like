@@ -3,7 +3,7 @@ import base64
 from flask import json
 from flask import jsonify
 import pytest
-from api import create_app
+from app import create_app
 
 
 @pytest.fixture()
