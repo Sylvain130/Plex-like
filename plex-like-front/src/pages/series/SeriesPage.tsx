@@ -71,8 +71,8 @@ const saisons: ISaison[] = [
 const stylePageSeries: SxProps = {
   display: "grid",
   gridGap: "0.4rem",
-  gridTemplateColumns: "repeat(14,8rem)",
-  gridTemplateRows: "repeat(10,13rem)",
+  gridTemplateColumns: "repeat(auto-fit,8rem)",
+  gridAutoRows: "13rem",
 };
 
 const SeriesPage = (): JSX.Element => {

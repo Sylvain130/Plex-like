@@ -1,5 +1,4 @@
 import { Box, SxProps } from "@mui/material";
-import { display } from "@mui/system";
 import { useState } from "react";
 import Content from "../../components/Content/Content";
 
@@ -21,8 +20,8 @@ const genre: string = "Heroic fantasy";
 const stylePageFilms: SxProps = {
   display: "grid",
   gridGap: "0.4rem",
-  gridTemplateColumns: "repeat(14,8rem)",
-  gridTemplateRows: "repeat(10,13rem)",
+  gridTemplateColumns: "repeat(auto-fit,8rem)",
+  gridAutoRows: "13rem",
 };
 
 const FilmsPage = (): JSX.Element => {
@@ -30,7 +29,7 @@ const FilmsPage = (): JSX.Element => {
   const displayContent = () => {
     var componentFilm: JSX.Element[];
     componentFilm = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 30; i++) {
       componentFilm.push(
         <Content
           contentInfo={{
